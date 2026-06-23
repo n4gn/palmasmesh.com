@@ -3,7 +3,7 @@ import Base from "../layouts/Base.astro";
 ---
 <Base
   title="PalmasMesh"
-  description="A neighbor-run radio network for Palmas del Mar. Like a group chat that works with no internet, no cell towers, and no monthly fee — built for when the next storm knocks everything else out."
+  description="A neighbor-run radio network for Palmas del Mar. Like a group chat that works with no Internet, no cell towers, and no monthly fee — built for when the next storm knocks everything else out."
 >
   <!-- HERO -->
   <section class="hero">
@@ -15,18 +15,19 @@ import Base from "../layouts/Base.astro";
     </div>
     <div class="wrap hero-inner">
       <p class="eyebrow">Palmas del Mar · Humacao, Puerto Rico</p>
-      <h1>When the towers go down,<br /><span class="hl">we stay in touch.</span></h1>
+      <h1>When the towers go down, <span class="hl">we stay in touch.</span></h1>
       <p class="lede">
-        PalmasMesh is a community messaging network that runs on small radios
-        instead of the cell network. Think of it like a neighborhood group
-        chat — except it keeps working with <strong>no internet, no cell
+        PalmasMesh is a community messaging network that runs on small &ldquo;mesh&rdquo; radios
+        instead of the cell network. It&rsquo;s built on the free and open source
+        <a href="https://meshtastic.org">Meshtastic</a> protocol — think of it like a
+        neighborhood group chat that keeps working with <strong>no Internet, no cell
         towers, and no monthly fee.</strong>
       </p>
       <div class="hero-cta">
         <a href="/hardware/" class="btn btn-primary">Get on the mesh →</a>
         <a href="/join/" class="btn btn-ghost">How the chat works</a>
       </div>
-      <p class="hero-foot">Built by neighbors after the last hurricane. Free to join, forever.</p>
+      <p class="hero-foot">Built by neighbors as a gift to the community. Free to join. Forever.</p>
     </div>
   </section>
 
@@ -38,19 +39,23 @@ import Base from "../layouts/Base.astro";
       <p class="lede">
         The wind picks up. The power flickers, then quits. A little while later
         the cell signal fades to nothing — and just like that, you can't reach
-        the people a few streets over to ask if everyone's okay.
+        your neighbors a few streets over to ask if everyone's okay.
       </p>
       <p>
-        After María, that silence lasted days for some of us, weeks for others.
-        PalmasMesh exists so the next time a storm rolls through, Palmas del Mar
-        still has a way to talk to itself — to check on a neighbor, share where
-        the water is rising, or just let family know you're safe.
+        After María, that silence lasted for far too long. PalmasMesh exists so
+        the next time a storm rolls through, Palmas del Mar still has a way to
+        talk to itself — to check on a neighbor, share where the water is rising,
+        or just let friends and family know you're safe.
       </p>
       <p>
-        It doesn't need the power grid. It doesn't need the internet. It doesn't
-        need a single cell tower. The radios run on tiny amounts of power — a
-        small battery or a solar panel keeps one going — and they pass your
-        messages neighbor-to-neighbor across the community on their own.
+        It doesn't need the power grid. It doesn't need the Internet. It doesn't
+        need a single cell tower. The fixed &ldquo;relay&rdquo; nodes that volunteers are
+        installing around Palmas are built to ride out a storm — many run on solar
+        panels or big battery backups, so they keep working even with the grid
+        down. And the personal radio you carry sips so little power that a phone
+        charger tops it off in no time, and a small battery keeps it running for
+        days. Together, they silently pass your messages neighbor-to-neighbor
+        across the community.
       </p>
     </div>
   </section>
@@ -61,7 +66,7 @@ import Base from "../layouts/Base.astro";
       <div class="anchor">
         <div>
           <p class="eyebrow">The simplest way to picture it</p>
-          <h2>It's a group chat that doesn't need a signal.</h2>
+          <h2>It's a group chat that doesn't need the Internet or a cell signal.</h2>
           <p class="lede">
             If you've ever used WhatsApp to keep up with family or a building
             group, you already understand PalmasMesh. You type a message, you
@@ -69,33 +74,59 @@ import Base from "../layouts/Base.astro";
           </p>
           <p>
             The only difference is what carries the message. WhatsApp needs the
-            internet. PalmasMesh uses a little radio in your hand or on your
-            shelf, and it hops your message from one neighbor's radio to the
+            Internet. PalmasMesh uses a little radio in your pocket, or even on your
+            keychain, and it hops your message from one neighbor's radio to the
             next until it arrives. No account, no phone number required, nothing
             to pay each month.
           </p>
         </div>
         <div class="compare">
           <div class="compare-row head">
-            <span></span><span>WhatsApp</span><span class="hl">PalmasMesh</span>
+            <span></span><span>WhatsApp</span><span>PalmasMesh</span>
           </div>
           <div class="compare-row">
-            <span>Send & receive messages</span><span>✓</span><span class="hl">✓</span>
+            <span>Send & receive group text messages</span><span class="yes">✓</span><span class="yes">✓</span>
           </div>
           <div class="compare-row">
-            <span>Works during a blackout</span><span>✕</span><span class="hl">✓</span>
+            <span>Send & receive private direct text messages</span><span class="yes">✓</span><span class="yes">✓</span>
           </div>
           <div class="compare-row">
-            <span>Works with no cell signal</span><span>✕</span><span class="hl">✓</span>
+            <span>Send & receive pictures and audio messages</span><span class="yes">✓</span><span class="no">✕</span>
           </div>
           <div class="compare-row">
-            <span>Works with no internet</span><span>✕</span><span class="hl">✓</span>
+            <span>Works during a blackout</span><span class="no">✕</span><span class="yes">✓</span>
+          </div>
+          <div class="compare-row">
+            <span>Works with no cell signal</span><span class="no">✕</span><span class="yes">✓</span>
+          </div>
+          <div class="compare-row">
+            <span>Works with no Internet</span><span class="no">✕</span><span class="yes">✓</span>
           </div>
           <div class="compare-row">
             <span>Monthly cost</span><span>data plan</span><span class="hl">$0</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- REACH BEYOND / RESILIENCE -->
+  <section class="section">
+    <div class="wrap-narrow">
+      <p class="eyebrow">A little more reach</p>
+      <h2>Local first — but not cut off from the world.</h2>
+      <p class="lede">
+        PalmasMesh works entirely on its own, but we also plan to bridge it to
+        the Internet when that's available. So under normal conditions, you can
+        reach friends and family well beyond Palmas, too.
+      </p>
+      <p>
+        And here's the reassuring part: even in the worst case — if a storm
+        takes out the Internet and knocks down some of our relay nodes — Palmas
+        can still talk to itself. Mesh networks are stubbornly resilient: as
+        long as enough neighbors are on the air, your messages keep finding
+        their way across the community.
+      </p>
     </div>
   </section>
 
@@ -109,9 +140,9 @@ import Base from "../layouts/Base.astro";
           <span class="how-step">1</span>
           <h3>A little radio</h3>
           <p>
-            You get a small, inexpensive device — about the size of a deck of
+            You get a small, inexpensive device — generally smaller than a deck of
             cards. It's the radio that does the talking. We'll point you to a
-            couple of good options.
+            few good options.
           </p>
           <a href="/hardware/">What to buy →</a>
         </div>
@@ -129,7 +160,8 @@ import Base from "../layouts/Base.astro";
           <h3>The neighborhood</h3>
           <p>
             Every radio in Palmas quietly passes messages along for everyone
-            else. The more neighbors join, the further the network reaches.
+            else. The more neighbors join, the further the network reaches, and
+            the more resilient it becomes in a disaster scenario.
           </p>
           <a href="/join/">Join the chat →</a>
         </div>
@@ -148,11 +180,12 @@ import Base from "../layouts/Base.astro";
         a break-glass-in-emergency tool.
       </p>
       <p>
-        Ask if anyone's heading to the marina. Trade a surfboard or a
-        ladder. Find out which gate the delivery truck is stuck at. And keep an
-        eye out — we're working on community games and weekly activities right
-        on the mesh, so there's a reason to check in every day. The more it's
-        part of the routine, the more ready we all are when it counts.
+        Create your own chat groups. Ask if anyone's heading to the airport.
+        Trade a surfboard or a ladder. Coordinate an impromptu poker night. Or
+        a pickleball match. And keep an eye out — we're working on community
+        games and regular activities right on the mesh, so there's a reason to
+        stay connected. The more it's part of the routine, the more ready we
+        all are when it counts.
       </p>
       <span class="pill">⬤ Community games & activities — coming soon</span>
     </div>
@@ -162,7 +195,7 @@ import Base from "../layouts/Base.astro";
   <section class="section finalcta">
     <div class="wrap-narrow center">
       <h2>Ready to join your neighbors?</h2>
-      <p class="lede">Getting on the mesh takes one small purchase and about fifteen minutes. We'll walk you through every step.</p>
+      <p class="lede">Getting on the mesh takes one small purchase (good options under $50) and about fifteen minutes. We'll walk you through every step.</p>
       <div class="hero-cta center">
         <a href="/hardware/" class="btn btn-primary">See what to buy →</a>
         <a href="/faq/" class="btn btn-dark">Read the FAQ</a>
@@ -248,6 +281,8 @@ import Base from "../layouts/Base.astro";
     .compare-row span:nth-child(3) { text-align: center; }
     .compare-row.head { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mist); }
     .compare-row .hl { color: var(--signal); font-weight: 600; }
+    .compare-row .yes { color: var(--reef); font-weight: 700; }
+    .compare-row .no { color: var(--warn); font-weight: 700; }
 
     /* How it works */
     .how { margin-top: 2.5rem; }

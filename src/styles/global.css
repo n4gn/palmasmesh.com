@@ -17,6 +17,7 @@
   --signal:   #ffb347;   /* warm signal light — the accent */
   --signal-2: #ff9a2e;   /* deeper signal for hovers */
   --reef:     #2fb6a3;   /* teal, "connected" state */
+  --warn:     #e07a5f;   /* muted coral, "no / unavailable" state */
   --line:     #d4dedd;   /* hairline on light */
   --line-dk:  #244055;   /* hairline on dark */
 
