@@ -1,0 +1,179 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+
+const steps = [
+  {
+    n: 1,
+    title: "Charge it and turn it on",
+    body: "When your device arrives, give it a charge over USB first — same kind of cable as most phones. Then power it on. If it has a little screen, you'll see it light up. Make sure the antenna is attached before you turn it on; running it without one can damage the radio.",
+  },
+  {
+    n: 2,
+    title: "Install the free Meshtastic app",
+    body: "On your phone, install the free Meshtastic app from the App Store (iPhone) or Google Play (Android). This is the app you'll actually read and type messages in. It's made by the open-source project the whole network runs on — no account, no sign-up.",
+  },
+  {
+    n: 3,
+    title: "Connect your phone to the radio",
+    body: "Open the app and let it find your device over Bluetooth, then tap to pair — just like connecting a speaker or headphones. Once they're paired, your phone and the radio talk to each other automatically whenever they're near.",
+  },
+  {
+    n: 4,
+    title: "Join the PalmasMesh settings",
+    body: "This is the one step that puts you on our network specifically. We'll give you a single link or QR code to tap — it sets your radio to the right channel and region for Palmas in one go. No typing in numbers by hand. Ask in the community and we'll send it to you.",
+  },
+  {
+    n: 5,
+    title: "Pick your name and say hello",
+    body: "Give your device a friendly name so neighbors know it's you — your first name or your spot in Palmas works well. Then send a quick \"hello\" to the group. If someone says hi back, you're officially on the mesh.",
+  },
+];
+---
+<Base
+  title="Set up a device"
+  description="A plain-language walkthrough for getting your radio onto PalmasMesh — from unboxing to your first message. No technical background needed."
+>
+  <PageHero
+    eyebrow="Getting started · Step 2"
+    title="Setting up your device"
+    lede="Once your radio arrives, getting it onto PalmasMesh takes about fifteen minutes. Here's the whole process, one step at a time."
+  />
+
+  <!-- Before you start -->
+  <section class="section">
+    <div class="wrap-narrow">
+      <div class="note">
+        <p>
+          <strong>Before you start:</strong> have your phone handy and your new
+          device charged. You don't need a computer for any of this — your phone
+          does all the work.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap-narrow">
+      <ol class="steps">
+        {steps.map((s) => (
+          <li class="step">
+            <span class="step-n" aria-hidden="true">{s.n}</span>
+            <div>
+              <h3>{s.title}</h3>
+              <p>{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Good settings to know -->
+  <section class="section section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow">A few settings worth knowing</p>
+      <h2>The handful of things we'd suggest</h2>
+      <p class="lede">
+        The PalmasMesh link in Step 4 sets most of this for you. But if you're
+        curious, here's what those settings are doing in plain terms.
+      </p>
+      <dl class="settings">
+        <div>
+          <dt>Region: United States</dt>
+          <dd>This sets your radio to the legal frequency for Puerto Rico. It has to match the rest of us, or your messages go nowhere.</dd>
+        </div>
+        <div>
+          <dt>Channel: PalmasMesh</dt>
+          <dd>Think of this like the name of our group chat. Everyone on the same channel shares the same conversation, kept private with a shared key.</dd>
+        </div>
+        <div>
+          <dt>A friendly device name</dt>
+          <dd>A short name and a four-letter "short code" so neighbors can tell who's who at a glance.</dd>
+        </div>
+        <div>
+          <dt>Leave the rest alone</dt>
+          <dd>There are a lot of advanced options in the app. You don't need to touch them. If something seems important, ask first — a wrong setting can quietly take you off the network.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Troubleshooting -->
+  <section class="section">
+    <div class="wrap-narrow">
+      <p class="eyebrow">If something's not working</p>
+      <h2>The usual suspects</h2>
+      <div class="trouble">
+        <div class="card">
+          <h4>The app won't find my device</h4>
+          <p>Make sure the radio is powered on and close by, and that Bluetooth is turned on in your phone's settings. Turning the radio off and back on clears up most pairing hiccups.</p>
+        </div>
+        <div class="card">
+          <h4>I'm paired but see no neighbors</h4>
+          <p>You may just be out of range of another node, or still need the PalmasMesh settings from Step 4. Send a message anyway — and ask in the community whether anyone hears you.</p>
+        </div>
+        <div class="card">
+          <h4>My messages aren't getting through</h4>
+          <p>Almost always this is the region or channel not matching. Re-tap the PalmasMesh setup link and you should be sorted. Position near a window or up high also helps a lot.</p>
+        </div>
+      </div>
+      <div class="next-row">
+        <a href="/join/" class="btn btn-primary">Next: join the chat →</a>
+        <a href="/faq/" class="btn btn-dark">Read the FAQ</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .note {
+      background: rgba(47,182,163,0.1);
+      border: 1px solid rgba(47,182,163,0.3);
+      border-left: 4px solid var(--reef);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.4rem;
+    }
+    .note p { margin: 0; }
+
+    .steps { list-style: none; margin: 0; padding: 0; counter-reset: none; }
+    .step {
+      display: flex;
+      gap: 1.2rem;
+      padding: 1.6rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .step:first-child { border-top: 0; padding-top: 0; }
+    .step-n {
+      flex: none;
+      width: 44px; height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--deep);
+      color: var(--signal);
+      font-family: var(--display);
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+    .step h3 { margin-bottom: 0.3rem; }
+    .step p { margin-bottom: 0; }
+
+    .settings { display: grid; gap: 1.3rem; margin-top: 1.5rem; }
+    .settings dt {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--signal);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.02em;
+    }
+    .settings dd { margin: 0; color: var(--mist); }
+
+    .trouble { display: grid; gap: 1.2rem; margin-top: 1rem; }
+    @media (min-width: 720px) { .trouble { grid-template-columns: repeat(3, 1fr); } }
+    .trouble h4 { margin-bottom: 0.4rem; }
+    .trouble p { margin-bottom: 0; font-size: 0.95rem; }
+
+    .next-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2rem; }
+  </style>
+</Base>

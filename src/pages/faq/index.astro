@@ -1,0 +1,147 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+
+const faqs = [
+  {
+    q: "Is this really free?",
+    a: "Yes. There's no subscription, no account, and no company in the middle. The only cost is the small radio you buy once to get on the network. After that, using PalmasMesh costs nothing — there's no monthly bill because there's no service provider to pay.",
+  },
+  {
+    q: "Do I need internet or a cell signal for it to work?",
+    a: "No — that's the whole point. PalmasMesh runs entirely on its own radios, neighbor to neighbor. It keeps working during a blackout, when the cell towers are down, and when there's no internet at all. It's at its most valuable exactly when everything else stops.",
+  },
+  {
+    q: "How far does it reach?",
+    a: "It depends a lot on where the radios are. Out in the open, one radio can reach a neighbor a few kilometers away. Around buildings and trees it's less. The clever part is that every radio passes messages along for the others, so the network as a whole reaches much further than any single device — and it grows every time someone new joins.",
+  },
+  {
+    q: "Is it like a walkie-talkie?",
+    a: "Closer to a text-message version of one. You're not talking into it — you're typing messages on your phone that travel over the radios. And unlike a walkie-talkie, you don't have to be in direct range of the person you're reaching, because messages hop across the whole community to get there.",
+  },
+  {
+    q: "Can other people read my messages?",
+    a: "Messages on PalmasMesh are scrambled so that only people on our channel can read the community chat, and a private message can only be read by the neighbor you sent it to. As with any group chat, treat the main channel as something your neighbors can see — but it's not open to the wider internet.",
+  },
+  {
+    q: "Do I have to be technical to use it?",
+    a: "Not at all. If you can install a phone app and pair a Bluetooth speaker, you can use PalmasMesh. The one-time setup takes about fifteen minutes, and there's always a neighbor happy to help you through it. Day to day, it's just a group chat.",
+  },
+  {
+    q: "Does it use up my phone's battery or data?",
+    a: "Barely any battery, and zero data — it never touches your data plan. The radio does the communicating and sips a tiny amount of power. Your phone is just the screen and keyboard, connected over Bluetooth.",
+  },
+  {
+    q: "What happens to my radio in a power cut?",
+    a: "It keeps running on its own battery. Many neighbors keep theirs topped up with a small power bank or solar panel so it can run for days. That way, when the grid goes down, your link to the community stays up.",
+  },
+  {
+    q: "Is this legal?",
+    a: "Yes. Meshtastic uses the same license-free radio band that countless everyday devices use, as long as you're on the correct US setting (915 MHz) for Puerto Rico. You don't need a license or any permit to take part.",
+  },
+  {
+    q: "Can it replace calling 9-1-1?",
+    a: "No — when you can reach emergency services, always use them. PalmasMesh is for staying connected with your neighbors and coordinating as a community, especially when the normal channels are down. Think of it as a community safety net, not a replacement for emergency dispatch.",
+  },
+  {
+    q: "How do I actually join?",
+    a: "Three steps: buy a small radio, set it up with the free app, and tap our invite link to join the PalmasMesh channel. The hardware, setup, and join pages on this site walk you through each one — and you can always ask in the Meshtastic Puerto Rico group on Facebook.",
+  },
+  {
+    q: "Who runs this?",
+    a: "Neighbors. PalmasMesh is a community project, not a business — built and looked after by people who live in Palmas del Mar and want the area to stay connected through whatever the next storm brings. The more hands and nodes, the stronger it gets.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+---
+<Base
+  title="FAQ"
+  description="Common questions about PalmasMesh — cost, range, how it works, whether you need to be technical, and how to join. Plain answers for Palmas del Mar neighbors."
+>
+  <PageHero
+    eyebrow="Questions & answers"
+    title="The questions neighbors ask"
+    lede="Everything people usually want to know before getting on the mesh. Don't see yours? Ask in the community — someone's happy to help."
+  />
+
+  <section class="section">
+    <div class="wrap-narrow">
+      <div class="faqs">
+        {faqs.map((f, i) => (
+          <details class="faq" open={i === 0}>
+            <summary>
+              <span>{f.q}</span>
+              <span class="faq-mark" aria-hidden="true"></span>
+            </summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="faq-cta">
+        <h3>Ready to get started?</h3>
+        <p>It begins with one small radio and about fifteen minutes.</p>
+        <div class="next-row">
+          <a href="/hardware/" class="btn btn-primary">See what to buy →</a>
+          <a href="/join/" class="btn btn-dark">How to join the chat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+  <style>
+    .faqs { border-top: 1px solid var(--line); }
+    .faq { border-bottom: 1px solid var(--line); }
+    .faq summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+      padding: 1.2rem 0;
+      font-family: var(--display);
+      font-size: var(--step-1);
+      font-weight: 540;
+      color: var(--ink);
+      list-style: none;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq-mark {
+      flex: none;
+      position: relative;
+      width: 18px; height: 18px;
+    }
+    .faq-mark::before, .faq-mark::after {
+      content: "";
+      position: absolute;
+      background: var(--signal-2);
+      border-radius: 2px;
+      transition: transform 0.2s ease;
+    }
+    .faq-mark::before { top: 8px; left: 0; width: 18px; height: 2px; }
+    .faq-mark::after { top: 0; left: 8px; width: 2px; height: 18px; }
+    .faq[open] .faq-mark::after { transform: scaleY(0); }
+    .faq p { margin: 0 0 1.3rem; color: var(--ink-soft); max-width: 64ch; }
+
+    .faq-cta {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: var(--foam-2);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .faq-cta p { color: var(--ink-soft); }
+    .next-row { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin-top: 1.2rem; }
+  </style>
+</Base>

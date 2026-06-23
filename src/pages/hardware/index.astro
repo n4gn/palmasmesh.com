@@ -1,0 +1,189 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+
+const picks = [
+  {
+    name: "Seeed Wio Tracker L1 Pro",
+    tag: "Easiest to start",
+    price: "≈ $43–48",
+    blurb:
+      "If you want something that works the moment you open the box, start here. It comes already assembled with a screen, a built-in battery, and even a tiny solar panel to top it up. Pair it with your phone and you're on the mesh.",
+    best: "Most neighbors — especially if you're not into gadgets.",
+  },
+  {
+    name: "Heltec LoRa 32 V3 / V4",
+    tag: "Best value",
+    price: "≈ $25–35",
+    blurb:
+      "The most affordable way in. It's a small circuit board with a little screen — you'll want to add an antenna and a way to power it, but it's hard to beat the price. Great if you'd like to buy two and split them with a neighbor.",
+    best: "Budget-minded folks and anyone happy to do a little setup.",
+  },
+  {
+    name: "SenseCAP T1000-E",
+    tag: "Pocket-sized",
+    price: "≈ $40",
+    blurb:
+      "A slim, sealed device about the size of a credit card, with built-in GPS. It's weather-resistant and easy to carry in a bag or pocket — handy for keeping a connection on you when you're out and about.",
+    best: "People who want something tiny and rugged to carry around.",
+  },
+  {
+    name: "RAK WisBlock Starter Kit",
+    tag: "For a permanent node",
+    price: "≈ $35–40",
+    blurb:
+      "This is the low-power building block our own rooftop nodes use. It sips so little power that a small solar panel can run it indefinitely — perfect for a node that lives outside and quietly extends coverage for the whole community.",
+    best: "Anyone who wants to host a node that helps everyone's range.",
+  },
+];
+---
+<Base
+  title="What to buy"
+  description="The radios that get you onto PalmasMesh, explained in plain language. Entry-level options for every budget — and the one rule you can't skip."
+>
+  <PageHero
+    eyebrow="Getting started · Step 1"
+    title="What to buy to get on the mesh"
+    lede="You need one small radio. That's the whole shopping list. Here are the options we'd point a neighbor to, from the simplest to the most hands-on."
+  />
+
+  <!-- The one rule -->
+  <section class="section">
+    <div class="wrap-narrow">
+      <div class="rule-box">
+        <span class="rule-icon" aria-hidden="true">⚠</span>
+        <div>
+          <h3>One rule you can't skip</h3>
+          <p>
+            Whatever you buy, choose the <strong>915&nbsp;MHz (US) version</strong>.
+            That's the radio band Puerto Rico uses. A device set for Europe
+            (868&nbsp;MHz) simply won't talk to the rest of us. When you're
+            ordering, look for "US" or "915&nbsp;MHz" — if you're unsure, ask
+            us before you buy.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Picks -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <p class="eyebrow">Our picks</p>
+      <h2>Four good ways to get started</h2>
+      <p class="lede" style="max-width:54ch;">
+        Any of these will get you onto PalmasMesh. There's no wrong choice —
+        it mostly comes down to your budget and how much setup you enjoy.
+      </p>
+      <div class="grid grid-2 picks">
+        {picks.map((p) => (
+          <article class="card pick">
+            <div class="pick-head">
+              <span class="pill">{p.tag}</span>
+              <span class="pick-price">{p.price}</span>
+            </div>
+            <h3>{p.name}</h3>
+            <p>{p.blurb}</p>
+            <p class="pick-best"><strong>Best for:</strong> {p.best}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- A couple of extras -->
+  <section class="section section-dark">
+    <div class="wrap-narrow">
+      <p class="eyebrow">A couple of small extras</p>
+      <h2>Worth picking up at the same time</h2>
+      <div class="extras">
+        <div>
+          <h4>A better antenna</h4>
+          <p>
+            The single biggest thing that improves range isn't the radio — it's
+            the antenna and where you put it. The little antenna in the box
+            works fine to start, but a slightly larger one (and a spot up high,
+            like a window or a balcony) goes a long way.
+          </p>
+        </div>
+        <div>
+          <h4>A way to keep it powered</h4>
+          <p>
+            Most of these run off a small rechargeable battery or a USB cable.
+            For a node you want running through a storm, a small power bank or a
+            little solar panel means it keeps going long after the grid quits.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Where to buy -->
+  <section class="section">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Where to buy</p>
+      <h2>Where these come from</h2>
+      <p>
+        These devices come from a handful of makers — Seeed Studio, Heltec, and
+        RAK Wireless are the common names — and you can order them online and
+        have them shipped to Palmas. Prices and shipping change often, so we're
+        not linking to specific stores here.
+      </p>
+      <p>
+        Honestly, the easiest path is to <strong>ask in the community before you
+        order.</strong> A neighbor has probably bought the exact thing you're
+        looking at, can tell you where they got it, and might even help you set
+        it up. That's rather the whole point of this.
+      </p>
+      <div class="next-row">
+        <a href="/setup/" class="btn btn-primary">Next: set up your device →</a>
+        <a href="/faq/" class="btn btn-dark">Still have questions?</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .rule-box {
+      display: flex;
+      gap: 1.1rem;
+      align-items: flex-start;
+      background: rgba(255,179,71,0.1);
+      border: 1px solid rgba(255,154,46,0.35);
+      border-left: 4px solid var(--signal);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.5rem;
+    }
+    .rule-icon { font-size: 1.6rem; line-height: 1.2; }
+    .rule-box h3 { margin-bottom: 0.4rem; }
+    .rule-box p { margin-bottom: 0; }
+
+    .picks { margin-top: 2rem; }
+    .pick { display: flex; flex-direction: column; }
+    .pick-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .pick-price {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+    .pick h3 { margin-bottom: 0.5rem; }
+    .pick-best {
+      margin-top: auto;
+      padding-top: 0.9rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+
+    .extras { display: grid; gap: 1.8rem; margin-top: 1rem; }
+    @media (min-width: 720px) { .extras { grid-template-columns: 1fr 1fr; } }
+    .extras h4 { color: var(--signal); }
+
+    .next-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  </style>
+</Base>
