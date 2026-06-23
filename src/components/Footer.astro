@@ -1,0 +1,84 @@
+---
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <span class="footer-name">PalmasMesh</span>
+      <p>A neighbor-run community radio network for Palmas del Mar, Humacao, Puerto Rico. Built to keep us connected when the storm takes everything else offline.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <div>
+        <h4>Get started</h4>
+        <a href="/hardware/">What to buy</a>
+        <a href="/setup/">Set up a device</a>
+        <a href="/join/">Join the chat</a>
+      </div>
+      <div>
+        <h4>Learn more</h4>
+        <a href="/map/">Coverage map</a>
+        <a href="/faq/">FAQ</a>
+        <a href="https://meshtastic.org" rel="noopener">About Meshtastic</a>
+      </div>
+    </nav>
+  </div>
+  <div class="wrap footer-base">
+    <span>© {year} PalmasMesh · Run by neighbors, for neighbors</span>
+    <span class="footer-free">Free to join · No subscription · No company in the middle</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--abyss);
+    color: var(--mist);
+    padding: clamp(3rem, 6vw, 4.5rem) 0 2rem;
+    border-top: 1px solid var(--line-dk);
+  }
+  .footer-inner {
+    display: grid;
+    gap: 2.5rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) {
+    .footer-inner { grid-template-columns: 1.4fr 1fr; }
+  }
+  .footer-name {
+    font-family: var(--display);
+    font-size: 1.5rem;
+    color: var(--foam);
+    font-weight: 600;
+  }
+  .footer-brand p { margin-top: 0.8rem; max-width: 38ch; font-size: 0.96rem; }
+  .footer-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .footer-nav h4 {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--signal);
+    margin-bottom: 0.9rem;
+  }
+  .footer-nav a {
+    display: block;
+    color: var(--mist);
+    padding: 0.28rem 0;
+    font-size: 0.96rem;
+  }
+  .footer-nav a:hover { color: var(--foam); text-decoration: none; }
+  .footer-base {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line-dk);
+    font-size: 0.85rem;
+  }
+  .footer-free { color: var(--reef); }
+</style>

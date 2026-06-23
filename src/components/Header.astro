@@ -1,0 +1,121 @@
+---
+const { path = "" } = Astro.props;
+const links = [
+  { href: "/", label: "Home" },
+  { href: "/hardware/", label: "Hardware" },
+  { href: "/setup/", label: "Set up a device" },
+  { href: "/join/", label: "Join the chat" },
+  { href: "/map/", label: "Map" },
+  { href: "/faq/", label: "FAQ" },
+];
+const isActive = (href) =>
+  href === "/" ? path === "/" : path.startsWith(href);
+---
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="/" class="brand" aria-label="PalmasMesh home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="30" height="30" fill="none">
+          <circle cx="16" cy="16" r="3.2" fill="var(--signal)"/>
+          <circle cx="6"  cy="9"  r="2.1" fill="var(--reef)"/>
+          <circle cx="26" cy="10" r="2.1" fill="var(--reef)"/>
+          <circle cx="7"  cy="24" r="2.1" fill="var(--reef)"/>
+          <circle cx="25" cy="23" r="2.1" fill="var(--reef)"/>
+          <path d="M16 16 6 9M16 16l10-6M16 16 7 24M16 16l9 7" stroke="var(--mist)" stroke-width="1.1"/>
+        </svg>
+      </span>
+      <span class="brand-text">PalmasMesh</span>
+    </a>
+
+    <input type="checkbox" id="navtoggle" class="nav-toggle" />
+    <label for="navtoggle" class="nav-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="Primary">
+      {links.map((l) => (
+        <a href={l.href} class:list={["nav-link", { active: isActive(l.href) }]}>
+          {l.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 22, 34, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line-dk);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: 66px;
+    flex-wrap: wrap;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--foam);
+    font-family: var(--display);
+    font-size: 1.35rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .brand:hover { text-decoration: none; }
+  .brand-mark { display: inline-flex; }
+  .site-nav {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .nav-link {
+    color: var(--mist);
+    font-size: 0.96rem;
+    font-weight: 500;
+    padding: 0.45rem 0.8rem;
+    border-radius: 100px;
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-link:hover { color: var(--foam); text-decoration: none; background: rgba(255,255,255,0.05); }
+  .nav-link.active { color: var(--signal); }
+
+  .nav-toggle, .nav-burger { display: none; }
+
+  @media (max-width: 760px) {
+    .nav-burger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-burger span {
+      width: 24px; height: 2px;
+      background: var(--foam);
+      border-radius: 2px;
+      transition: 0.2s;
+    }
+    .site-nav {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.2rem;
+      padding-bottom: 0.8rem;
+    }
+    .nav-link { padding: 0.7rem 0.6rem; }
+    .nav-toggle:checked ~ .site-nav { display: flex; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(2) { opacity: 0; }
+    .nav-toggle:checked ~ .nav-burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+</style>

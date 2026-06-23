@@ -1,0 +1,226 @@
+/* ============================================================
+   PalmasMesh design system
+   Palette: deep ocean → storm sky, with a warm "signal" light
+   that stays on when the grid goes down.
+   ============================================================ */
+
+:root {
+  /* Color */
+  --abyss:    #0a1622;   /* deepest background, night sea */
+  --deep:     #0f2233;   /* primary dark surface */
+  --tide:     #15384f;   /* raised surface / cards */
+  --foam:     #f3f6f5;   /* light page background */
+  --foam-2:   #e7eeed;   /* light surface */
+  --ink:      #10242f;   /* body text on light */
+  --ink-soft: #3f5560;   /* secondary text on light */
+  --mist:     #9fb6c0;   /* secondary text on dark */
+  --signal:   #ffb347;   /* warm signal light — the accent */
+  --signal-2: #ff9a2e;   /* deeper signal for hovers */
+  --reef:     #2fb6a3;   /* teal, "connected" state */
+  --line:     #d4dedd;   /* hairline on light */
+  --line-dk:  #244055;   /* hairline on dark */
+
+  /* Type */
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, monospace;
+
+  /* Scale */
+  --step--1: clamp(0.83rem, 0.79rem + 0.18vw, 0.94rem);
+  --step-0:  clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+  --step-1:  clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --step-2:  clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  --step-3:  clamp(1.9rem, 1.55rem + 1.7vw, 3rem);
+  --step-4:  clamp(2.4rem, 1.8rem + 3vw, 4.4rem);
+
+  --maxw: 72rem;
+  --radius: 14px;
+  --radius-sm: 9px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--foam);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 540;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 0.5em;
+  font-optical-sizing: auto;
+}
+
+h1 { font-size: var(--step-4); }
+h2 { font-size: var(--step-3); }
+h3 { font-size: var(--step-2); }
+h4 { font-size: var(--step-1); }
+
+p { margin: 0 0 1.1em; }
+a { color: var(--signal-2); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+strong { font-weight: 600; }
+
+.wrap {
+  width: min(100% - 2.5rem, var(--maxw));
+  margin-inline: auto;
+}
+.wrap-narrow {
+  width: min(100% - 2.5rem, 46rem);
+  margin-inline: auto;
+}
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--signal-2);
+  margin: 0 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 26px; height: 1px;
+  background: var(--signal);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: var(--step-0);
+  padding: 0.85rem 1.5rem;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+  line-height: 1;
+}
+.btn:hover { text-decoration: none; transform: translateY(-2px); }
+.btn-primary {
+  background: var(--signal);
+  color: var(--abyss);
+  box-shadow: 0 6px 24px -8px rgba(255,154,46,0.7);
+}
+.btn-primary:hover { background: var(--signal-2); }
+.btn-ghost {
+  background: transparent;
+  color: var(--foam);
+  border-color: var(--line-dk);
+}
+.btn-ghost:hover { border-color: var(--signal); color: var(--signal); }
+.btn-dark {
+  background: var(--deep);
+  color: var(--foam);
+}
+.btn-dark:hover { background: var(--tide); }
+
+/* Section rhythm */
+.section { padding: clamp(3.5rem, 7vw, 6.5rem) 0; }
+.section-dark {
+  background: var(--deep);
+  color: var(--foam);
+}
+.section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4 { color: var(--foam); }
+.section-dark p { color: var(--mist); }
+
+/* Cards */
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+}
+.section-dark .card {
+  background: var(--tide);
+  border-color: var(--line-dk);
+}
+
+/* Grid helpers */
+.grid { display: grid; gap: 1.4rem; }
+@media (min-width: 720px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Lede paragraph */
+.lede {
+  font-size: var(--step-1);
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.section-dark .lede { color: var(--mist); }
+
+/* Pill / tag */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--mono);
+  font-size: var(--step--1);
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  background: rgba(47,182,163,0.12);
+  color: var(--reef);
+  border: 1px solid rgba(47,182,163,0.3);
+}
+
+/* Focus visibility */
+:focus-visible {
+  outline: 3px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link */
+.skip {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--signal);
+  color: var(--abyss);
+  padding: 0.7rem 1rem;
+  z-index: 200;
+  border-radius: 0 0 8px 0;
+  font-weight: 600;
+}
+.skip:focus { left: 0; }
+
+hr.rule {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 2.5rem 0;
+}
+.section-dark hr.rule { border-color: var(--line-dk); }
