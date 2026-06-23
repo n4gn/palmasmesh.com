@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://palmasmesh.com/sitemap-index.xml
