@@ -1,0 +1,52 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+---
+<Base
+  title="Contact"
+  description="Get in touch with the neighbors behind PalmasMesh."
+>
+  <PageHero
+    eyebrow="Get in touch"
+    title="Contact us"
+    lede="Questions about joining, hosting a node, or anything else? We'd love to hear from you."
+  />
+
+  <section class="section">
+    <div class="wrap-narrow">
+      <div class="placeholder">
+        <p class="placeholder-tag">Coming soon</p>
+        <h2>A contact form is on the way.</h2>
+        <p>
+          We're still setting this part up. In the meantime, the best way to
+          reach the PalmasMesh community is to ask a neighbor who's already on
+          the mesh — check back here soon for a proper contact form.
+        </p>
+        <div class="next-row">
+          <a href="/faq/" class="btn btn-primary">Read the FAQ</a>
+          <a href="/hardware/" class="btn btn-dark">See what to buy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .placeholder {
+      background: var(--foam-2);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      text-align: center;
+    }
+    .placeholder-tag {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--signal-2);
+      margin-bottom: 0.6rem;
+    }
+    .placeholder p:not(.placeholder-tag) { color: var(--ink-soft); max-width: 52ch; margin-inline: auto; }
+    .next-row { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; margin-top: 1.5rem; }
+  </style>
+</Base>

@@ -105,17 +105,10 @@ const mentions = [
         ))}
       </div>
 
-      <p class="disclosure">
-        A note on links: some links on this page may be affiliate links, meaning
-        PalmasMesh could earn a small commission if you buy through them — at no
-        extra cost to you. We only recommend gear we'd tell a neighbor to buy,
-        commission or not.
-      </p>
-
       <div class="mentions">
         <h4>Also worth a look</h4>
         <p>
-          A couple of other solid, ready-to-use options if none of the above fit:
+          A couple of other solid, ready-to-use options if none of the above fit:{" "}
           {mentions.map((m, i) => (
             <>
               <a href={m.url} target="_blank" rel="noopener">{m.name}</a>{i < mentions.length - 1 ? ", " : "."}
@@ -123,6 +116,8 @@ const mentions = [
           ))}
         </p>
       </div>
+
+      <p class="disclosure">A note on links: some links on this page may be affiliate links, meaning PalmasMesh could earn a small commission if you buy through them — at no extra cost to you. We only recommend gear we'd tell a neighbor to buy, commission or not.</p>
     </div>
   </section>
 
@@ -213,11 +208,12 @@ const mentions = [
     }
 
     .disclosure {
-      margin-top: 1.8rem;
+      margin: 2.2rem auto 0;
       font-size: 0.86rem;
       color: var(--ink-soft);
-      max-width: 70ch;
+      max-width: 80ch;
       font-style: italic;
+      text-align: center;
     }
 
     .mentions { margin-top: 1.6rem; }
