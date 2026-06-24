@@ -157,6 +157,9 @@ strong { font-weight: 600; }
 .section-dark h1, .section-dark h2, .section-dark h3, .section-dark h4 { color: var(--foam); }
 .section-dark p { color: var(--mist); }
 
+/* Light step-down surface — distinguishes adjacent light sections */
+.section-tide { background: var(--foam-2); }
+
 /* Cards */
 .card {
   background: #fff;
