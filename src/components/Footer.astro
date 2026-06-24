@@ -23,7 +23,7 @@ const year = new Date().getFullYear();
     </nav>
   </div>
   <div class="wrap footer-base">
-    <span>© {year} PalmasMesh · Run by neighbors, for neighbors</span>
+    <span>© {year} PalmasMesh · Run by neighbors, for neighbors · <a href="/privacy-policy/">Privacy</a></span>
     <span class="footer-free">Free to join · No subscription · No company in the middle</span>
   </div>
 </footer>
@@ -81,4 +81,6 @@ const year = new Date().getFullYear();
     font-size: 0.85rem;
   }
   .footer-free { color: var(--reef); }
+  .footer-base a { color: var(--mist); text-decoration: underline; text-underline-offset: 2px; }
+  .footer-base a:hover { color: var(--foam); }
 </style>

@@ -6,45 +6,60 @@ const picks = [
   {
     name: "Seeed Wio Tracker L1 Pro",
     tag: "Easiest to start",
-    price: "≈ $43–48",
+    price: "≈ $40",
+    url: "https://www.seeedstudio.com/Wio-Tracker-L1-Pro-p-6454.html",
     blurb:
-      "If you want something that works the moment you open the box, start here. It comes already assembled with a screen, a built-in battery, and even a tiny solar panel to top it up. Pair it with your phone and you're on the mesh.",
+      "If you want something that works the moment you open the box, start here. It comes assembled with a little screen, a built-in battery, and even a solar input to help top it up. Turn it on, pair it with your phone, and you're on the mesh.",
     best: "Most neighbors — especially if you're not into gadgets.",
   },
   {
-    name: "Heltec LoRa 32 V3 / V4",
-    tag: "Best value",
-    price: "≈ $25–35",
-    blurb:
-      "The most affordable way in. It's a small circuit board with a little screen — you'll want to add an antenna and a way to power it, but it's hard to beat the price. Great if you'd like to buy two and split them with a neighbor.",
-    best: "Budget-minded folks and anyone happy to do a little setup.",
-  },
-  {
-    name: "SenseCAP T1000-E",
-    tag: "Pocket-sized",
+    name: "RAK WisMesh Tag",
+    tag: "Best pocket tag",
     price: "≈ $40",
+    url: "https://store.rakwireless.com/products/wismesh-tag-meshtastic-gps-lora-tracker-ip66",
     blurb:
-      "A slim, sealed device about the size of a credit card, with built-in GPS. It's weather-resistant and easy to carry in a bag or pocket — handy for keeping a connection on you when you're out and about.",
-    best: "People who want something tiny and rugged to carry around.",
+      "A sealed, weatherproof tag about the size of a credit card, with the antennas tucked inside so there's nothing to stick out or snap off. It clips to a bag or lanyard, the battery lasts a couple of days, and it shrugs off rain. Built to just live in your pocket.",
+    best: "People who want something tiny and rugged to carry everywhere.",
   },
   {
-    name: "RAK WisBlock Starter Kit",
-    tag: "For a permanent node",
-    price: "≈ $35–40",
+    name: "Elecrow ThinkNode M1",
+    tag: "Best screen",
+    price: "≈ $54",
+    url: "https://store.rokland.com/products/elecrow-thinknode-m1-lora-meshtastic-radio-1-54-epd-screen-gps-nrf52840",
     blurb:
-      "This is the low-power building block our own rooftop nodes use. It sips so little power that a small solar panel can run it indefinitely — perfect for a node that lives outside and quietly extends coverage for the whole community.",
-    best: "Anyone who wants to host a node that helps everyone's range.",
+      "A proper little handheld with buttons and an e-paper screen you can read in bright sunlight — so you can see messages right on the device without reaching for your phone. The battery stretches to four or five days. This link ships from within the US.",
+    best: "Anyone who wants to read messages on the device itself.",
+  },
+  {
+    name: "Heltec MeshPocket",
+    tag: "Two-in-one",
+    price: "≈ $49",
+    url: "https://heltec.org/project/meshpocket/",
+    blurb:
+      "Clever idea: it's a phone power bank that's also a mesh radio. You'd carry a battery pack anyway, so this one keeps your phone charged and keeps you on PalmasMesh at the same time. It even charges your phone wirelessly. (Not weatherproof, so keep it dry.)",
+    best: "Folks who'd rather not carry a separate gadget.",
+  },
+];
+
+const mentions = [
+  {
+    name: "muzi.works SuperBase Kit",
+    url: "https://muzi.works/products/superbase-kit",
+  },
+  {
+    name: "Seeed SenseCAP T1000-E",
+    url: "https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html",
   },
 ];
 ---
 <Base
   title="What to buy"
-  description="The radios that get you onto PalmasMesh, explained in plain language. Entry-level options for every budget — and the one rule you can't skip."
+  description="The radios that get you onto PalmasMesh, explained in plain language. Four portable picks for every budget — and the one rule you can't skip."
 >
   <PageHero
     eyebrow="Getting started · Step 1"
     title="What to buy to get on the mesh"
-    lede="You need one small radio. That's the whole shopping list. Here are the options we'd point a neighbor to, from the simplest to the most hands-on."
+    lede="You need one small radio you can carry with you. That's the whole shopping list. Here are the four we'd point a neighbor to, from the simplest to the most hands-on."
   />
 
   <!-- The one rule -->
@@ -55,11 +70,11 @@ const picks = [
         <div>
           <h3>One rule you can't skip</h3>
           <p>
-            Whatever you buy, choose the <strong>915&nbsp;MHz (US) version</strong>.
-            That's the radio band Puerto Rico uses. A device set for Europe
-            (868&nbsp;MHz) simply won't talk to the rest of us. When you're
-            ordering, look for "US" or "915&nbsp;MHz" — if you're unsure, ask
-            us before you buy.
+            <strong>It has to be a Meshtastic device set to the 915&nbsp;MHz US
+            band</strong> (sometimes written 902–928&nbsp;MHz). That's what
+            Puerto Rico uses — a device set for Europe (868&nbsp;MHz) won't talk
+            to the rest of us. When ordering, look for "US" or "915&nbsp;MHz."
+            Not sure? Ask us before you buy.
           </p>
         </div>
       </div>
@@ -72,8 +87,8 @@ const picks = [
       <p class="eyebrow">Our picks</p>
       <h2>Four good ways to get started</h2>
       <p class="lede" style="max-width:54ch;">
-        Any of these will get you onto PalmasMesh. There's no wrong choice —
-        it mostly comes down to your budget and how much setup you enjoy.
+        Any of these will get you onto PalmasMesh. There's no wrong choice — it
+        mostly comes down to your budget and what you'd like it to do.
       </p>
       <div class="grid grid-2 picks">
         {picks.map((p) => (
@@ -85,55 +100,68 @@ const picks = [
             <h3>{p.name}</h3>
             <p>{p.blurb}</p>
             <p class="pick-best"><strong>Best for:</strong> {p.best}</p>
+            <a class="pick-link" href={p.url} target="_blank" rel="noopener">View this device →</a>
           </article>
         ))}
       </div>
-    </div>
-  </section>
 
-  <!-- A couple of extras -->
-  <section class="section section-dark">
-    <div class="wrap-narrow">
-      <p class="eyebrow">A couple of small extras</p>
-      <h2>Worth picking up at the same time</h2>
-      <div class="extras">
-        <div>
-          <h4>A better antenna</h4>
-          <p>
-            The single biggest thing that improves range isn't the radio — it's
-            the antenna and where you put it. The little antenna in the box
-            works fine to start, but a slightly larger one (and a spot up high,
-            like a window or a balcony) goes a long way.
-          </p>
-        </div>
-        <div>
-          <h4>A way to keep it powered</h4>
-          <p>
-            Most of these run off a small rechargeable battery or a USB cable.
-            For a node you want running through a storm, a small power bank or a
-            little solar panel means it keeps going long after the grid quits.
-          </p>
-        </div>
+      <p class="disclosure">
+        A note on links: some links on this page may be affiliate links, meaning
+        PalmasMesh could earn a small commission if you buy through them — at no
+        extra cost to you. We only recommend gear we'd tell a neighbor to buy,
+        commission or not.
+      </p>
+
+      <div class="mentions">
+        <h4>Also worth a look</h4>
+        <p>
+          A couple of other solid, ready-to-use options if none of the above fit:
+          {mentions.map((m, i) => (
+            <>
+              <a href={m.url} target="_blank" rel="noopener">{m.name}</a>{i < mentions.length - 1 ? ", " : "."}
+            </>
+          ))}
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- Where to buy -->
-  <section class="section">
+  <!-- Antenna note -->
+  <section class="section section-tide">
     <div class="wrap-narrow">
-      <p class="eyebrow">Where to buy</p>
-      <h2>Where these come from</h2>
+      <p class="eyebrow">A common question</p>
+      <h2>Do I need a bigger antenna?</h2>
       <p>
-        These devices come from a handful of makers — Seeed Studio, Heltec, and
-        RAK Wireless are the common names — and you can order them online and
-        have them shipped to Palmas. Prices and shipping change often, so we're
-        not linking to specific stores here.
+        Usually not. As we build out PalmasMesh, the goal is solid coverage
+        across the whole community — so a sealed "tag" with an antenna tucked
+        inside, or a device with the small "stubby" antenna it ships with,
+        should work fine for everyday carry.
       </p>
       <p>
-        Honestly, the easiest path is to <strong>ask in the community before you
-        order.</strong> A neighbor has probably bought the exact thing you're
-        looking at, can tell you where they got it, and might even help you set
-        it up. That's rather the whole point of this.
+        A larger antenna mostly helps in two cases: a fixed node mounted up high,
+        or if you're out near the edge of our coverage. Start with whatever's in
+        the box — you can always add a better antenna later if you find you need
+        one.
+      </p>
+    </div>
+  </section>
+
+  <!-- Host a node -->
+  <section class="section">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Want to do more?</p>
+      <h2>Thinking about hosting a permanent node?</h2>
+      <p>
+        The four picks above are all <strong>portable client devices</strong> —
+        the kind you carry with you. They're not meant to be permanent
+        infrastructure.
+      </p>
+      <p>
+        If you'd like to contribute to the network in a bigger way — installing
+        a permanent outdoor node on a roof or high point to extend coverage for
+        the whole community — that's a different (and hugely valuable) kind of
+        setup. We'd love to help you get it right. Get in touch and we'll guide
+        you toward the right hardware and the best spot to put it.
       </p>
       <div class="next-row">
         <a href="/setup/" class="btn btn-primary">Next: set up your device →</a>
@@ -179,10 +207,22 @@ const picks = [
       font-size: 0.92rem;
       color: var(--ink-soft);
     }
+    .pick-link {
+      padding-top: 0.7rem;
+      font-weight: 600;
+    }
 
-    .extras { display: grid; gap: 1.8rem; margin-top: 1rem; }
-    @media (min-width: 720px) { .extras { grid-template-columns: 1fr 1fr; } }
-    .extras h4 { color: var(--signal); }
+    .disclosure {
+      margin-top: 1.8rem;
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+      max-width: 70ch;
+      font-style: italic;
+    }
+
+    .mentions { margin-top: 1.6rem; }
+    .mentions h4 { color: var(--signal); margin-bottom: 0.4rem; }
+    .mentions p { color: var(--ink-soft); }
 
     .next-row { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.5rem; }
   </style>

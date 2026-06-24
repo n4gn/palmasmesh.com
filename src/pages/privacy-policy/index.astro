@@ -1,0 +1,106 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+
+const updated = "June 2026";
+---
+<Base
+  title="Privacy Policy"
+  description="How PalmasMesh.com handles your information. Short version: this is a static informational site, we don't collect personal data, and some product links are affiliate links."
+>
+  <PageHero
+    eyebrow="The fine print"
+    title="Privacy Policy"
+    lede="The short version: this is a simple informational site run by neighbors. We don't ask for your personal information, and we don't sell anything directly."
+  />
+
+  <section class="section">
+    <div class="wrap-narrow policy">
+      <p class="policy-updated">Last updated: {updated}</p>
+
+      <h3>Who we are</h3>
+      <p>
+        PalmasMesh.com is a community-run informational website about PalmasMesh,
+        a neighbor-built Meshtastic radio network in Palmas del Mar, Humacao,
+        Puerto Rico. It is not a business, and we don't sell products or services
+        through this site.
+      </p>
+
+      <h3>What we collect</h3>
+      <p>
+        Almost nothing. This is a static website — there are no accounts to
+        create, no forms that store your details, and no newsletter sign-up. We
+        don't ask for your name, email, or any other personal information to read
+        these pages.
+      </p>
+      <p>
+        Like most websites, our hosting provider may keep basic, standard server
+        logs (for example, the type of request and a general timestamp) to keep
+        the site running and secure. We don't use these to identify you, and we
+        don't build profiles of visitors.
+      </p>
+
+      <h3>Cookies and tracking</h3>
+      <p>
+        We don't set advertising or tracking cookies, and we don't run
+        third-party analytics that follow you around the web. If that ever
+        changes, we'll update this page first.
+      </p>
+
+      <h3>Affiliate links</h3>
+      <p>
+        Some links to recommended hardware may be affiliate links. If you click
+        one and buy something, PalmasMesh may earn a small commission from that
+        retailer — at no extra cost to you. When you click an affiliate link, the
+        retailer (for example, the device maker or their store) may set its own
+        cookies and apply its own privacy policy, which we don't control.
+      </p>
+      <p>
+        We only recommend gear we'd genuinely point a neighbor toward, whether or
+        not it earns a commission. Any commission helps cover the cost of running
+        the network and this site.
+      </p>
+
+      <h3>Links to other sites</h3>
+      <p>
+        This site links out to manufacturers, stores, the Meshtastic project, and
+        community groups. Once you follow a link off PalmasMesh.com, you're
+        subject to that site's own privacy practices. We'd encourage you to read
+        their policies if you're concerned about how they handle your data.
+      </p>
+
+      <h3>Children</h3>
+      <p>
+        This is a general-audience informational site and isn't directed at
+        children. We don't knowingly collect information from anyone.
+      </p>
+
+      <h3>Changes to this policy</h3>
+      <p>
+        If we change how the site works in a way that affects this policy, we'll
+        update the text here and change the "last updated" date above.
+      </p>
+
+      <h3>Questions</h3>
+      <p>
+        If you have a question about this policy or the network, reach out through
+        the "Meshtastic Puerto Rico" group on Facebook or ask a neighbor who's
+        already on the mesh.
+      </p>
+    </div>
+  </section>
+
+  <style>
+    .policy h3 {
+      margin-top: 2rem;
+      color: var(--ink);
+    }
+    .policy h3:first-of-type { margin-top: 0; }
+    .policy-updated {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      margin-bottom: 2rem;
+    }
+  </style>
+</Base>
