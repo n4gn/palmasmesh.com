@@ -5,6 +5,7 @@ import PageHero from "../../components/PageHero.astro";
 const picks = [
   {
     name: "Seeed Wio Tracker L1 Pro",
+    img: "/images/wio-l1-pro.webp",
     tag: "Easiest to start",
     price: "≈ $40",
     url: "https://www.seeedstudio.com/Wio-Tracker-L1-Pro-p-6454.html",
@@ -14,15 +15,17 @@ const picks = [
   },
   {
     name: "RAK WisMesh Tag",
+    img: "/images/wismesh-tag.webp",
     tag: "Best pocket tag",
-    price: "≈ $40",
-    url: "https://store.rakwireless.com/products/wismesh-tag-meshtastic-gps-lora-tracker-ip66",
+    price: "≈ $50",
+    url: "https://store.rokland.com/products/wismesh-tag-from-rakwireless-mokosmart-meshtastic-compatible-card-sized-node-us915-mhz",
     blurb:
       "A sealed, weatherproof tag about the size of a credit card, with the antennas tucked inside so there's nothing to stick out or snap off. It clips to a bag or lanyard, the battery lasts a couple of days, and it shrugs off rain. Built to just live in your pocket.",
     best: "People who want something tiny and rugged to carry everywhere.",
   },
   {
     name: "Elecrow ThinkNode M1",
+    img: "/images/thinknode-m1.webp",
     tag: "Best screen",
     price: "≈ $54",
     url: "https://store.rokland.com/products/elecrow-thinknode-m1-lora-meshtastic-radio-1-54-epd-screen-gps-nrf52840",
@@ -32,6 +35,7 @@ const picks = [
   },
   {
     name: "Heltec MeshPocket",
+    img: "/images/meshpocket.webp",
     tag: "Two-in-one",
     price: "≈ $49",
     url: "https://heltec.org/project/meshpocket/",
@@ -93,6 +97,9 @@ const mentions = [
       <div class="grid grid-2 picks">
         {picks.map((p) => (
           <article class="card pick">
+            <div class="pick-img">
+              <img src={p.img} alt={p.name} loading="lazy" width="600" height="600" />
+            </div>
             <div class="pick-head">
               <span class="pill">{p.tag}</span>
               <span class="pick-price">{p.price}</span>
@@ -155,7 +162,7 @@ const mentions = [
         If you'd like to contribute to the network in a bigger way — installing
         a permanent outdoor node on a roof or high point to extend coverage for
         the whole community — that's a different (and hugely valuable) kind of
-        setup. We'd love to help you get it right. Get in touch and we'll guide
+        setup. We'd love to help you get it right. <a href="/contact/">Get in touch</a> and we'll guide
         you toward the right hardware and the best spot to put it.
       </p>
       <div class="next-row">
@@ -182,6 +189,19 @@ const mentions = [
 
     .picks { margin-top: 2rem; }
     .pick { display: flex; flex-direction: column; }
+    .pick-img {
+      margin: -1.6rem -1.6rem 1.2rem;
+      background: var(--foam-2);
+      border-radius: var(--radius) var(--radius) 0 0;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .pick-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
     .pick-head {
       display: flex;
       align-items: center;
