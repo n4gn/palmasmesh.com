@@ -25,9 +25,9 @@ import PageHero from "../../components/PageHero.astro";
       </p>
       <p>
         You'll also be able to send a message to one specific neighbor when you
-        want a private word, the same way you'd start a one-on-one chat. Both
-        kinds of messages are scrambled so only the people they're meant for can
-        read them.
+        want a private word, the same way you'd start a one-on-one chat. Both the
+        main channel and direct messages are encrypted, but they aren't equally
+        private — it's worth understanding the difference (more on that below).
       </p>
     </div>
   </section>
@@ -76,8 +76,38 @@ import PageHero from "../../components/PageHero.astro";
     </div>
   </section>
 
+  <!-- Privacy note -->
+  <section class="section section-tide">
+    <div class="wrap-narrow">
+      <p class="eyebrow">A note on privacy</p>
+      <h2>How private is it, really?</h2>
+      <p>
+        Short version: PalmasMesh is great for everyday community chat and
+        coordinating in an emergency — but it's not a secure messaging app, and
+        you shouldn't treat it like one.
+      </p>
+      <p>
+        The <strong>main channel</strong> is encrypted, but the key that unlocks
+        it is shared by everyone on the network and isn't really a secret. The
+        safest way to think about it: the main channel is like talking in a
+        public plaza. Your neighbors can hear you, which is the whole point — but
+        so could anyone else who's listening. Keep it to the kind of thing you'd
+        happily say out loud in the town square.
+      </p>
+      <p>
+        <strong>Direct messages</strong> to one person are more private — they
+        use a key tied to that specific device, so they're not part of the
+        shared channel. That's better, but still not perfect, and not a
+        substitute for a dedicated secure app. As a simple rule: never send
+        anything truly sensitive — passwords, financial details, anything you'd
+        be hurt by someone else seeing — over the mesh. For that, use the right
+        tool for the job.
+      </p>
+    </div>
+  </section>
+
   <!-- Courtesies -->
-  <section class="section" style="padding-top:0;">
+  <section class="section">
     <div class="wrap-narrow">
       <div class="card courtesy">
         <h3>A few simple courtesies</h3>

@@ -6,22 +6,22 @@ const steps = [
   {
     n: 1,
     title: "Charge it and turn it on",
-    body: "When your device arrives, give it a charge over USB first — same kind of cable as most phones. Then power it on. If it has a little screen, you'll see it light up. Make sure the antenna is attached before you turn it on; running it without one can damage the radio.",
+    body: "When your device arrives, give it a charge over USB first — same kind of cable as most phones. Then power it on. Make sure the antenna is attached before you turn it on; running it without one can damage the radio. If it has a little screen, you'll see it light up.",
   },
   {
     n: 2,
     title: "Install the free Meshtastic app",
-    body: "On your phone, install the free Meshtastic app from the App Store (iPhone) or Google Play (Android). This is the app you'll actually read and type messages in. It's made by the open-source project the whole network runs on — no account, no sign-up.",
+    body: "On your phone, install the free Meshtastic app from your favorite app store. This is the app where you'll actually read and type messages. It's made by the open-source project the whole network runs on — no account, no sign-up.",
   },
   {
     n: 3,
     title: "Connect your phone to the radio",
-    body: "Open the app and let it find your device over Bluetooth, then tap to pair — just like connecting a speaker or headphones. Once they're paired, your phone and the radio talk to each other automatically whenever they're near.",
+    body: "Open the Meshtastic app and let it find your device over Bluetooth, then tap to pair — just like connecting a speaker or headphones. Once they're paired, your phone and the radio talk to each other automatically whenever they're near.",
   },
   {
     n: 4,
-    title: "Join the PalmasMesh settings",
-    body: "This is the one step that puts you on our network specifically. We'll give you a single link or QR code to tap — it sets your radio to the right channel and region for Palmas in one go. No typing in numbers by hand. Ask in the community and we'll send it to you.",
+    title: "Join PalmasMesh",
+    bodyHtml: "This is the one step that puts you on our network specifically. We'll give you a single link or QR code to tap — it sets your radio to the right channel and region for Palmas in one go. No typing in numbers by hand. <a href=\"/contact/\">Contact us</a> and we'll send it to you. Or reach out to another member.",
   },
   {
     n: 5,
@@ -62,7 +62,7 @@ const steps = [
             <span class="step-n" aria-hidden="true">{s.n}</span>
             <div>
               <h3>{s.title}</h3>
-              <p>{s.body}</p>
+              {s.bodyHtml ? <p set:html={s.bodyHtml} /> : <p>{s.body}</p>}
             </div>
           </li>
         ))}
