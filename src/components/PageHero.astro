@@ -1,11 +1,11 @@
 ---
-const { eyebrow, title, lede } = Astro.props;
+const { eyebrow, title, lede, ledeHtml } = Astro.props;
 ---
 <section class="page-hero section-dark">
   <div class="wrap-narrow">
     {eyebrow && <p class="eyebrow">{eyebrow}</p>}
     <h1>{title}</h1>
-    {lede && <p class="lede">{lede}</p>}
+    {ledeHtml ? <p class="lede" set:html={ledeHtml} /> : lede && <p class="lede">{lede}</p>}
   </div>
 </section>
 

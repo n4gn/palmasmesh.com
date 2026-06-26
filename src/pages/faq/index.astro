@@ -5,7 +5,7 @@ import PageHero from "../../components/PageHero.astro";
 const faqs = [
   {
     q: "Is this really free?",
-    a: "Yes. There's no subscription, no account, and no company in the middle. The only cost is the small radio you buy once to get on the network. After that, using PalmasMesh costs nothing — there's no monthly bill because there's no service provider to pay.",
+    a: "Yes. There's no subscription, no account, and no company in the middle. PalmasMesh is a labor of love — run by neighbors for neighbors. The only cost is the small radio you buy once to get on the network. After that, using PalmasMesh costs nothing — there's no monthly bill because there's no service provider to pay.",
   },
   {
     q: "Do I need Internet or a cell signal for it to work?",
@@ -21,7 +21,7 @@ const faqs = [
   },
   {
     q: "Can other people read my messages?",
-    a: "Messages on PalmasMesh are scrambled so that only people on our channel can read the community chat, and a private message can only be read by the neighbor you sent it to. As with any group chat, treat the main channel as something your neighbors can see — but it's not open to the wider Internet.",
+    a: "Treat the main channel like a conversation in a public plaza. It's encrypted, but the key is shared by everyone on the network and isn't really a secret — so assume anyone could be listening, and keep it to things you'd happily say out loud in the town square. Direct messages to one neighbor are more private, but still not a substitute for a dedicated secure app. The simple rule: never send anything truly sensitive — passwords, financial details — over the mesh.",
   },
   {
     q: "Do I have to be technical to use it?",
@@ -40,16 +40,17 @@ const faqs = [
     a: "Yes. Meshtastic uses the same license-free radio band that countless everyday devices use, as long as you're on the correct US setting (915 MHz) for Puerto Rico. You don't need a license or any permit to take part.",
   },
   {
-    q: "Can it replace calling 9-1-1?",
+    q: "Can it replace calling 911?",
     a: "No — when you can reach emergency services, always use them. PalmasMesh is for staying connected with your neighbors and coordinating as a community, especially when the normal channels are down. Think of it as a community safety net, not a replacement for emergency dispatch.",
   },
   {
     q: "How do I actually join?",
-    a: "Three steps: buy a small radio, set it up with the free app, and tap our invite link to join the PalmasMesh channel. The hardware, setup, and join pages on this site walk you through each one — and you can always ask in the Meshtastic Puerto Rico group on Facebook.",
+    a: "Just follow the directions to set up a device, then join the chat. The setup and join pages on this site walk you through each step.",
+    aHtml: "Just follow the directions to <a href=\"/setup/\">set up a device</a> and then <a href=\"/join/\">join the chat</a>.",
   },
   {
     q: "Who runs this?",
-    a: "Neighbors. PalmasMesh is a community project, not a business — built and looked after by people who live in Palmas del Mar and want the area to stay connected through whatever the next storm brings. The more hands and nodes, the stronger it gets.",
+    a: "Neighbors. PalmasMesh is a community project, not a business — built and looked after by people who live in Palmas del Mar and want the area to stay connected through whatever the next storm brings. The more users and nodes, the stronger it gets.",
   },
 ];
 
@@ -70,7 +71,7 @@ const faqJsonLd = {
   <PageHero
     eyebrow="Questions & answers"
     title="The questions neighbors ask"
-    lede="Everything people usually want to know before getting on the mesh. Don't see yours? Ask in the community — someone's happy to help."
+    ledeHtml='Everything people usually want to know before getting on the mesh. Don&rsquo;t see yours? <a href="/contact/">Let us know</a> — someone&rsquo;s happy to help.'
   />
 
   <section class="section">
@@ -82,7 +83,7 @@ const faqJsonLd = {
               <span>{f.q}</span>
               <span class="faq-mark" aria-hidden="true"></span>
             </summary>
-            <p>{f.a}</p>
+            {f.aHtml ? <p set:html={f.aHtml} /> : <p>{f.a}</p>}
           </details>
         ))}
       </div>
