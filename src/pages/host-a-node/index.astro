@@ -1,0 +1,216 @@
+---
+import Base from "../../layouts/Base.astro";
+import PageHero from "../../components/PageHero.astro";
+
+// NODES — infrastructure picks, easiest/most self-contained first.
+// AFFILIATE: when programs are live, swap each `url` for the affiliate URL.
+//   Seeed  → SenseCAP Solar P1 Pro, XIAO ESP32S3
+//   Rokland → WisMesh Ethernet Gateway
+//   LowMesh → no affiliate program found; plain link
+const nodes = [
+  {
+    name: "Seeed SenseCAP Solar Node P1 Pro",
+    img: "/images/sensecap-solar-p1-pro.webp",
+    tag: "Set it and forget it",
+    price: "≈ $90",
+    url: "https://www.seeedstudio.com/SenseCAP-Solar-Node-P1-Pro-for-Meshtastic-LoRa-p-6412.html", // AFFILIATE: Seeed
+    blurb:
+      "The simplest way to put up a real outdoor node. It's solar-powered and fully self-contained — panel, battery, radio, and weatherproof case all in one. Mount it up high where it gets sun, point it at the sky, and it keeps running on its own, even with the grid down. No wiring, no power outlet needed.",
+    best: "Most people. If you want one node that just works and survives a storm, start here.",
+  },
+  {
+    name: "LowMesh Outdoor PoE Node v1",
+    img: "/images/lowmesh-poe-node.webp",
+    tag: "Rugged & powered",
+    price: "≈ $120",
+    url: "https://shop.lowmesh.com/products/outdoor-poe-node-v1", // no affiliate program found
+    blurb:
+      "A tough, weatherproof outdoor node that draws its power over a single ethernet cable (Power over Ethernet), so there's no separate power supply at the node itself. It doesn't carry data over that cable — you manage it over Bluetooth or USB — but it's a rock-solid, always-on relay for a roof or pole. (These are the units already running on PalmasMesh.)",
+    best: "A permanent, mains-powered spot where you can run a cable but want a clean, sealed install.",
+  },
+  {
+    name: "RAK WisMesh Ethernet Gateway",
+    img: "/images/wismesh-ethernet-gateway.webp",
+    tag: "Most capable",
+    price: "≈ $115",
+    url: "https://store.rokland.com/collections/other-lora-products/products/wismesh-ethernet-gateway", // AFFILIATE: Rokland
+    blurb:
+      "The nicest option, and the most involved. It also runs on Power over Ethernet, but unlike the others it connects to your local network — so you can manage it right over your home network, and it can link to distant nodes over the Internet (MQTT), not just by radio. Plan on a little extra: mounting hardware, a PoE injector, and an ethernet run to where it lives.",
+    best: "Hands-on hosts who want network control and an Internet bridge for the mesh.",
+  },
+  {
+    name: "Seeed XIAO ESP32S3 (with enclosure)",
+    img: "/images/xiao-esp32s3.webp",
+    tag: "Cheap gap-filler",
+    price: "≈ $18",
+    url: "https://www.seeedstudio.com/XIAO-ESP32S3-for-Meshtastic-LoRa-with-3D-Printed-Enclosure-p-6314.html", // AFFILIATE: Seeed
+    blurb:
+      "A tiny, inexpensive node you can sit near a window — ideally on an upper floor. It won't match a proper outdoor install with a good antenna, but it's a cheap, easy way to fill in a coverage gap. Great for a small business that wants to make sure customers stay on the mesh while they're inside.",
+    best: "Filling a dead spot indoors, or businesses extending coverage on a budget.",
+  },
+];
+---
+<Base
+  title="Host a permanent node"
+  description="Want to extend PalmasMesh for the whole community? The outdoor nodes, antennas, and parts we'd recommend for a permanent relay — explained in plain language."
+>
+  <PageHero
+    eyebrow="Want to do more?"
+    title="Host a permanent node"
+    lede="The portable picks on our hardware page are radios you carry. This page is different: it's for neighbors who want to put up a permanent node — on a roof, a balcony, or a high window — to extend coverage for everyone. It's one of the most valuable things you can do for the network."
+  />
+
+  <!-- Why it matters -->
+  <section class="section">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Why bother?</p>
+      <h2>A few good nodes up high carry the whole network.</h2>
+      <p>
+        PalmasMesh gets stronger every time someone adds a fixed node in a good
+        spot. A radio mounted up high, with a clear view, reaches much farther
+        than one in a pocket — so a handful of well-placed nodes end up doing
+        most of the work of passing everyone's messages across Palmas.
+      </p>
+      <p>
+        You don't need to be technical to help. Pick a device below, and
+        <a href="/contact/">get in touch</a> — we'll help you choose the right
+        spot, get it on the air, and make sure it actually improves coverage
+        instead of just adding noise.
+      </p>
+    </div>
+  </section>
+
+  <!-- Node picks -->
+  <section class="section section-tide" style="padding-top:2.5rem;">
+    <div class="wrap">
+      <p class="eyebrow">The nodes</p>
+      <h2>Four ways to put up a node</h2>
+      <p class="lede" style="max-width:64ch;">
+        From a self-contained solar unit you can forget about, to a fully
+        networked gateway. All of these are meant to stay put and run around the
+        clock — not to carry with you.
+      </p>
+      <div class="grid grid-2 picks">
+        {nodes.map((n) => (
+          <article class="card pick">
+            <div class="pick-img">
+              <img src={n.img} alt={n.name} loading="lazy" width="600" height="600" />
+            </div>
+            <div class="pick-head">
+              <span class="pill">{n.tag}</span>
+              <span class="pick-price">{n.price}</span>
+            </div>
+            <h3>{n.name}</h3>
+            <p>{n.blurb}</p>
+            <p class="pick-best"><strong>Best for:</strong> {n.best}</p>
+            <a class="pick-link" href={n.url} target="_blank" rel="noopener">View this device →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Antennas -->
+  <section class="section">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Worth the upgrade</p>
+      <h2>A better antenna, mounted in the clear</h2>
+      <p>
+        For an outdoor install, the single biggest improvement is a good
+        external antenna mounted <em>above</em> the node, up in the clear with
+        nothing blocking it. We like the
+        <a href="https://store.rokland.com/collections/802-11ah-wi-fi-halow" target="_blank" rel="noopener">6&nbsp;dBi and 8&nbsp;dBi antennas here</a>
+        {/* AFFILIATE: Rokland */} (about $35–38). They give a real, noticeable
+        bump in range and reliability over the small antenna a node ships with.
+      </p>
+      <p>
+        To connect one, you'll need a short jumper cable with the right
+        connectors. Rokland's
+        <a href="https://store.rokland.com/collections/antenna-extension-cables-pigtails-connectors" target="_blank" rel="noopener">extension cables and pigtails</a>
+        {/* AFFILIATE: Rokland */} (about $8–12) cover it — just make sure you
+        get the correct connector size and polarity for your node, and keep the
+        cable as short as you can. (Longer cable = lost signal.) Not sure which
+        one? <a href="/contact/">Ask us</a> — easy to get wrong, easy for us to
+        confirm.
+      </p>
+    </div>
+  </section>
+
+  <!-- Disclosure -->
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <p class="disclosure">A note on links: some links on this page may be affiliate links, meaning PalmasMesh could earn a small commission if you buy through them — at no extra cost to you. We only recommend gear we'd tell a neighbor to buy, commission or not.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-dark">
+    <div class="wrap-narrow center">
+      <h2>Thinking about it? Let's talk first.</h2>
+      <p class="lede" style="max-width:50ch;margin-inline:auto;">
+        Before you buy anything, reach out. The right device and the right
+        location make all the difference — and we're happy to help you get both
+        right the first time.
+      </p>
+      <div class="hero-cta center">
+        <a href="/contact/" class="btn btn-primary">Get in touch →</a>
+        <a href="/hardware/" class="btn btn-dark">Just want a portable radio?</a>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .picks { margin-top: 2rem; }
+    .pick { display: flex; flex-direction: column; }
+    .pick-img {
+      margin: -1.6rem -1.6rem 1.2rem;
+      background: var(--foam-2);
+      border-radius: var(--radius) var(--radius) 0 0;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .pick-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .pick-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.9rem;
+    }
+    .pick-price {
+      font-family: var(--mono);
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      white-space: nowrap;
+    }
+    .pick h3 { margin-bottom: 0.5rem; }
+    .pick-best {
+      margin-top: auto;
+      padding-top: 0.9rem;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+    }
+    .pick-link {
+      padding-top: 0.7rem;
+      font-weight: 600;
+    }
+
+    .disclosure {
+      margin: 0 auto;
+      font-size: 0.86rem;
+      color: var(--ink-soft);
+      max-width: 80ch;
+      font-style: italic;
+      text-align: center;
+    }
+
+    .hero-cta { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1.8rem; }
+    .hero-cta.center { justify-content: center; }
+    .center { text-align: center; }
+  </style>
+</Base>
