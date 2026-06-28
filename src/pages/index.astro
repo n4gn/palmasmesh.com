@@ -192,7 +192,7 @@ import Base from "../layouts/Base.astro";
   </section>
 
   <!-- WHAT ELSE / FUTURE USES -->
-  <section class="section section-tide">
+  <section class="section section-dark future-sec">
     <div class="wrap-narrow">
       <p class="eyebrow">Down the road</p>
       <h2>Messages today — and a lot more tomorrow.</h2>
@@ -204,11 +204,11 @@ import Base from "../layouts/Base.astro";
       </p>
       <ul class="future">
         <li><strong>Keep track of things.</strong> A small tag on a boat, a
-          golf cart, a pet carrier, or emergency gear, so you can see roughly
-          where it is on the map.</li>
+          golf cart, a pet carrier, or emergency gear, so you can see where it
+          is on the map.</li>
         <li><strong>Quiet sensors around Palmas.</strong> Temperature and
           humidity readings, a remote weather station, water-level or flood
-          sensors near low spots — little check-ins that arrive on their own,
+          sensors near low spots (or on your boat) — little check-ins that arrive on their own,
           no Internet required.</li>
         <li><strong>Automatic alerts.</strong> A door or gate sensor, a sump-pump
           or generator alarm, or a storm-warning broadcast that reaches everyone
@@ -340,6 +340,9 @@ import Base from "../layouts/Base.astro";
     .everyday .pill { margin-top: 1.2rem; }
 
     /* Future uses */
+    .future-sec { background:
+      radial-gradient(120% 90% at 90% -10%, rgba(255,179,71,0.14), transparent 55%),
+      var(--abyss); }
     .future {
       margin: 1.6rem 0 0;
       padding: 0;
@@ -349,16 +352,18 @@ import Base from "../layouts/Base.astro";
     }
     .future li {
       position: relative;
-      padding-left: 1.6rem;
+      padding-left: 1.9rem;
       max-width: 64ch;
     }
     .future li::before {
       content: "›";
       position: absolute;
       left: 0;
-      top: -0.05em;
+      top: -0.12em;
+      font-size: 1.5em;
+      line-height: 1;
       color: var(--signal);
-      font-weight: 700;
+      font-weight: 800;
     }
     .future-foot { margin-top: 1.6rem; }
 
