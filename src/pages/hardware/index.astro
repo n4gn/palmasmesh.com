@@ -3,12 +3,16 @@ import Base from "../../layouts/Base.astro";
 import PageHero from "../../components/PageHero.astro";
 
 const picks = [
+  // AFFILIATE: when programs are live, swap each `url` for the affiliate URL.
+  //   Seeed   → Wio Tracker L1 Pro, (SenseCAP T1000-E in mentions)
+  //   Rokland → WisMesh Tag, ThinkNode M1
+  //   Heltec  → no affiliate program found; plain link
   {
     name: "Seeed Wio Tracker L1 Pro",
     img: "/images/wio-l1-pro.webp",
     tag: "Easiest to start",
     price: "≈ $40",
-    url: "https://www.seeedstudio.com/Wio-Tracker-L1-Pro-p-6454.html",
+    url: "https://www.seeedstudio.com/Wio-Tracker-L1-Pro-p-6454.html", // AFFILIATE: Seeed
     blurb:
       "If you want something that works the moment you open the box, start here. It comes assembled with a little screen, a built-in battery, and even a solar input to help top it up. Turn it on, pair it with your phone, and you're on the mesh.",
     best: "Most neighbors — especially if you're not into gadgets.",
@@ -18,7 +22,7 @@ const picks = [
     img: "/images/wismesh-tag.webp",
     tag: "Best pocket tag",
     price: "≈ $50",
-    url: "https://store.rokland.com/products/wismesh-tag-from-rakwireless-mokosmart-meshtastic-compatible-card-sized-node-us915-mhz",
+    url: "https://store.rokland.com/products/wismesh-tag-from-rakwireless-mokosmart-meshtastic-compatible-card-sized-node-us915-mhz", // AFFILIATE: Rokland
     blurb:
       "A sealed, weatherproof tag about the size of a credit card, with the antennas tucked inside so there's nothing to stick out or snap off. It clips to a bag or lanyard, the battery lasts a couple of days, and it shrugs off rain. Built to just live in your pocket.",
     best: "People who want something tiny and rugged to carry everywhere.",
@@ -28,7 +32,7 @@ const picks = [
     img: "/images/thinknode-m1.webp",
     tag: "Best screen",
     price: "≈ $63",
-    url: "https://store.rokland.com/products/elecrow-thinknode-m1-lora-meshtastic-radio-1-54-epd-screen-gps-nrf52840",
+    url: "https://store.rokland.com/products/elecrow-thinknode-m1-lora-meshtastic-radio-1-54-epd-screen-gps-nrf52840", // AFFILIATE: Rokland
     blurb:
       "A proper little handheld with buttons and an e-paper screen you can read in bright sunlight — so you can see messages right on the device without reaching for your phone. The battery stretches to four or five days. This link ships from within the US.",
     best: "Anyone who wants to read messages on the device itself.",
@@ -38,7 +42,7 @@ const picks = [
     img: "/images/meshpocket.webp",
     tag: "Two-in-one",
     price: "≈ $49",
-    url: "https://heltec.org/project/meshpocket/",
+    url: "https://heltec.org/project/meshpocket/", // Heltec: no affiliate program found; plain link
     blurb:
       "Clever idea: it's a phone power bank that's also a mesh radio. You'd carry a battery pack anyway, so this one keeps your phone charged and keeps you on PalmasMesh at the same time. It even charges your phone wirelessly. (Not weatherproof, so keep it dry.)",
     best: "Folks who'd rather not carry a separate gadget.",
@@ -46,13 +50,14 @@ const picks = [
 ];
 
 const mentions = [
+  // AFFILIATE: SenseCAP T1000-E → Seeed. SuperBase Kit (muzi.works) → no program found.
   {
     name: "muzi.works SuperBase Kit",
     url: "https://muzi.works/products/superbase-kit",
   },
   {
     name: "Seeed SenseCAP T1000-E",
-    url: "https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html",
+    url: "https://www.seeedstudio.com/SenseCAP-Card-Tracker-T1000-E-for-Meshtastic-p-5913.html", // AFFILIATE: Seeed
   },
 ];
 ---
@@ -161,8 +166,9 @@ const mentions = [
         If you'd like to contribute to the network in a bigger way — installing
         a permanent outdoor node on a roof or high point to extend coverage for
         the whole community — that's a different (and hugely valuable) kind of
-        setup. We'd love to help you get it right. <a href="/contact/">Get in touch</a> and we'll guide
-        you toward the right hardware and the best spot to put it.
+        setup. We've put together <a href="/host-a-node/">a guide to hosting a permanent node</a> —
+        the outdoor units, antennas, and parts we'd recommend. Or just
+        <a href="/contact/">get in touch</a> and we'll help you get it right.
       </p>
       <div class="next-row">
         <a href="/setup/" class="btn btn-primary">Next: set up your device →</a>
