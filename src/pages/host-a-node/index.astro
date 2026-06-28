@@ -16,7 +16,7 @@ const nodes = [
     url: "https://www.seeedstudio.com/SenseCAP-Solar-Node-P1-Pro-for-Meshtastic-LoRa-p-6412.html", // AFFILIATE: Seeed
     blurb:
       "The simplest way to put up a real outdoor node. It's solar-powered and fully self-contained — panel, battery, radio, and weatherproof case all in one. Mount it up high where it gets sun, point it at the sky, and it keeps running on its own, even with the grid down. No wiring, no power outlet needed.",
-    best: "Most people. If you want one node that just works and survives a storm, start here.",
+    best: "Most people. If you want one node that just works without cabling and is immune to power outages, start here.",
   },
   {
     name: "LowMesh Outdoor PoE Node v1",
@@ -25,8 +25,8 @@ const nodes = [
     price: "≈ $120",
     url: "https://shop.lowmesh.com/products/outdoor-poe-node-v1", // no affiliate program found
     blurb:
-      "A tough, weatherproof outdoor node that draws its power over a single ethernet cable (Power over Ethernet), so there's no separate power supply at the node itself. It doesn't carry data over that cable — you manage it over Bluetooth or USB — but it's a rock-solid, always-on relay for a roof or pole. (These are the units already running on PalmasMesh.)",
-    best: "A permanent, mains-powered spot where you can run a cable but want a clean, sealed install.",
+      "A tough, weatherproof outdoor node that draws its power over a single ethernet cable (Power over Ethernet), so there's no separate power supply at the node itself. It doesn't carry data over that cable — you manage it over Bluetooth or USB — but it's a rock-solid, always-on relay for a roof or pole. With a standard high-performance antenna and a slim, low-profile design, this unit should have a higher chance of storm survival.",
+    best: "A permanent, mains-powered spot where you can run a cable but want a clean, robust install.",
   },
   {
     name: "RAK WisMesh Ethernet Gateway",
@@ -35,20 +35,22 @@ const nodes = [
     price: "≈ $115",
     url: "https://store.rokland.com/collections/other-lora-products/products/wismesh-ethernet-gateway", // AFFILIATE: Rokland
     blurb:
-      "The nicest option, and the most involved. It also runs on Power over Ethernet, but unlike the others it connects to your local network — so you can manage it right over your home network, and it can link to distant nodes over the Internet (MQTT), not just by radio. Plan on a little extra: mounting hardware, a PoE injector, and an ethernet run to where it lives.",
+      "The nicest option, and the most involved. It also runs on Power over Ethernet, but unlike the others it connects to your local router or switch — so you can manage it right over your home network, and it can link to distant nodes over the Internet (MQTT), not just by radio. Plan on spending a little extra: you'll need mounting hardware, a PoE injector, and an ethernet run to where it lives.",
     best: "Hands-on hosts who want network control and an Internet bridge for the mesh.",
   },
   {
     name: "Seeed XIAO ESP32S3 (with enclosure)",
     img: "/images/xiao-esp32s3.webp",
     tag: "Cheap gap-filler",
-    price: "≈ $18",
+    price: "≈ $20",
     url: "https://www.seeedstudio.com/XIAO-ESP32S3-for-Meshtastic-LoRa-with-3D-Printed-Enclosure-p-6314.html", // AFFILIATE: Seeed
     blurb:
-      "A tiny, inexpensive node you can sit near a window — ideally on an upper floor. It won't match a proper outdoor install with a good antenna, but it's a cheap, easy way to fill in a coverage gap. Great for a small business that wants to make sure customers stay on the mesh while they're inside.",
+      "A tiny, inexpensive node you can place near a window — ideally on an upper floor. It won't match a proper outdoor install with a good antenna, but it's a cheap, easy way to fill in a coverage gap. Great for a small business that wants to make sure customers stay on the mesh while they're inside. It can even connect to your Wi-Fi for easier management and connectivity to other nodes.",
     best: "Filling a dead spot indoors, or businesses extending coverage on a budget.",
   },
 ];
+
+const heroLede = `The portable picks on our <a href="/hardware/">hardware page</a> are radios you carry. This page is different: it's for neighbors who want to put up a permanent node — on a roof, a balcony, or a high window — to extend coverage for everyone. It's one of the most valuable things you can do for the network.`;
 ---
 <Base
   title="Host a permanent node"
@@ -57,7 +59,7 @@ const nodes = [
   <PageHero
     eyebrow="Want to do more?"
     title="Host a permanent node"
-    lede="The portable picks on our hardware page are radios you carry. This page is different: it's for neighbors who want to put up a permanent node — on a roof, a balcony, or a high window — to extend coverage for everyone. It's one of the most valuable things you can do for the network."
+    ledeHtml={heroLede}
   />
 
   <!-- Why it matters -->
@@ -69,10 +71,11 @@ const nodes = [
         PalmasMesh gets stronger every time someone adds a fixed node in a good
         spot. A radio mounted up high, with a clear view, reaches much farther
         than one in a pocket — so a handful of well-placed nodes end up doing
-        most of the work of passing everyone's messages across Palmas.
+        most of the work of passing everyone's messages across Palmas and into
+        the wider Puerto Rico mesh.
       </p>
       <p>
-        You don't need to be technical to help. Pick a device below, and
+        You don't need to be technical to help. Pick a device below, and{" "}
         <a href="/contact/">get in touch</a> — we'll help you choose the right
         spot, get it on the air, and make sure it actually improves coverage
         instead of just adding noise.
@@ -87,7 +90,7 @@ const nodes = [
       <h2>Four ways to put up a node</h2>
       <p class="lede" style="max-width:64ch;">
         From a self-contained solar unit you can forget about, to a fully
-        networked gateway. All of these are meant to stay put and run around the
+        networked gateway, all of these are meant to stay put and run around the
         clock — not to carry with you.
       </p>
       <div class="grid grid-2 picks">
@@ -118,20 +121,19 @@ const nodes = [
       <p>
         For an outdoor install, the single biggest improvement is a good
         external antenna mounted <em>above</em> the node, up in the clear with
-        nothing blocking it. We like the
+        nothing blocking it. We like the{" "}
         <a href="https://store.rokland.com/collections/802-11ah-wi-fi-halow" target="_blank" rel="noopener">6&nbsp;dBi and 8&nbsp;dBi antennas here</a>
         {/* AFFILIATE: Rokland */} (about $35–38). They give a real, noticeable
-        bump in range and reliability over the small antenna a node ships with.
+        bump in range and reliability over the standard antennas most nodes ships with.
       </p>
       <p>
         To connect one, you'll need a short jumper cable with the right
-        connectors. Rokland's
+        connectors. Rokland's{" "}
         <a href="https://store.rokland.com/collections/antenna-extension-cables-pigtails-connectors" target="_blank" rel="noopener">extension cables and pigtails</a>
         {/* AFFILIATE: Rokland */} (about $8–12) cover it — just make sure you
         get the correct connector size and polarity for your node, and keep the
         cable as short as you can. (Longer cable = lost signal.) Not sure which
-        one? <a href="/contact/">Ask us</a> — easy to get wrong, easy for us to
-        confirm.
+        one? <a href="/contact/">Ask us</a>.
       </p>
     </div>
   </section>
