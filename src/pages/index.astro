@@ -191,6 +191,43 @@ import Base from "../layouts/Base.astro";
     </div>
   </section>
 
+  <!-- WHAT ELSE / FUTURE USES -->
+  <section class="section section-tide">
+    <div class="wrap-narrow">
+      <p class="eyebrow">Down the road</p>
+      <h2>Messages today — and a lot more tomorrow.</h2>
+      <p class="lede">
+        Once a community has its own radio network, it can carry far more than
+        chat. The same little radios that pass your messages can quietly do
+        useful jobs in the background — and as PalmasMesh grows, these are some
+        of the things we'd love to build with you.
+      </p>
+      <ul class="future">
+        <li><strong>Keep track of things.</strong> A small tag on a boat, a
+          golf cart, a pet carrier, or emergency gear, so you can see roughly
+          where it is on the map.</li>
+        <li><strong>Quiet sensors around Palmas.</strong> Temperature and
+          humidity readings, a remote weather station, water-level or flood
+          sensors near low spots — little check-ins that arrive on their own,
+          no Internet required.</li>
+        <li><strong>Automatic alerts.</strong> A door or gate sensor, a sump-pump
+          or generator alarm, or a storm-warning broadcast that reaches everyone
+          on the mesh at once — even with the towers down.</li>
+        <li><strong>Buttons that just work.</strong> A simple &ldquo;I&rsquo;m okay&rdquo;
+          or &ldquo;need help&rdquo; check-in for neighbors who&rsquo;d rather not fuss
+          with a phone during an emergency.</li>
+        <li><strong>And more over time.</strong> The Meshtastic world is moving
+          fast — from off-grid payments to all kinds of small connected devices.
+          As good ideas come along, a network that&rsquo;s already up and running is
+          ready to carry them.</li>
+      </ul>
+      <p class="future-foot">
+        Got an idea, or something you&rsquo;d like to try? <a href="/contact/">Tell us</a> —
+        a lot of this gets built because a neighbor asked.
+      </p>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="section finalcta">
     <div class="wrap-narrow center">
@@ -301,6 +338,29 @@ import Base from "../layouts/Base.astro";
       radial-gradient(110% 90% at 10% 110%, rgba(47,182,163,0.12), transparent 55%),
       var(--deep); }
     .everyday .pill { margin-top: 1.2rem; }
+
+    /* Future uses */
+    .future {
+      margin: 1.6rem 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.9rem;
+    }
+    .future li {
+      position: relative;
+      padding-left: 1.6rem;
+      max-width: 64ch;
+    }
+    .future li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      top: -0.05em;
+      color: var(--signal);
+      font-weight: 700;
+    }
+    .future-foot { margin-top: 1.6rem; }
 
     /* Final CTA */
     .finalcta { background: var(--foam-2); }
