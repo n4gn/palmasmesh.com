@@ -1,0 +1,81 @@
+---
+/**
+ * The generic "PalmasMesh node" page body.
+ *
+ * Rendered BOTH by src/pages/[slug].astro (for every known node slug, at HTTP
+ * 200) and by src/pages/404.astro (for anything else, at HTTP 404) — so a name
+ * that has moved, or one that has not been added here yet, still lands on
+ * something useful instead of a dead end.
+ *
+ * PRIVACY: this component must never render a host name, an address or a
+ * coordinate. See src/data/nodes.json.
+ */
+const { slug = null, node = null, known = false } = Astro.props;
+const label = node?.slug ?? slug;
+---
+
+<section class="page-hero section-dark">
+  <div class="wrap-narrow">
+    <p class="eyebrow">PalmasMesh node</p>
+    {label
+      ? <h1><span class="node-slug">{label}</span></h1>
+      : <h1>A PalmasMesh node</h1>}
+    {known
+      ? <p class="lede">
+          You've found the page for one of the radios that make up the PalmasMesh
+          network here in Palmas del Mar.
+        </p>
+      : <p class="lede">
+          This looks like the name of a PalmasMesh radio. We don't have a page
+          for this one yet — but here's what it is.
+        </p>}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap-narrow">
+    <p>
+      You most likely saw this name on a map pin, or in the node list of a
+      Meshtastic app, and typed it in. Every node on our network is named after
+      the address of this website, so the name doubles as a link you can look up.
+    </p>
+
+    <p>
+      <strong>PalmasMesh is a neighbor-run radio network.</strong> Each node is a
+      small, low-power radio — about the price of a nice dinner — hosted by a
+      resident or a local business who volunteered a windowsill and a USB socket.
+      Together they pass text messages across Palmas del Mar with no cell towers,
+      no Internet and no monthly fee. When the towers go down, the mesh stays up.
+    </p>
+
+    <div class="card" style="margin: 2rem 0;">
+      <h3>Why there's nothing more here</h3>
+      <p>
+        We don't publish who hosts a node, or exactly where it sits. A node page
+        says that a radio exists and nothing about the person who kindly keeps it
+        powered — unless that host has specifically asked to be credited.
+      </p>
+    </div>
+
+    <h2>Want in?</h2>
+    <p>
+      Anyone in Palmas can join. You don't need this node's permission, or
+      anyone's — you need a small radio and about twenty minutes.
+    </p>
+
+    <div style="display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:1.5rem;">
+      <a href="/" class="btn btn-primary">What is PalmasMesh? →</a>
+      <a href="/join/" class="btn btn-ghost">Join the chat</a>
+      <a href="/host-a-node/" class="btn btn-ghost">Host a node</a>
+      <a href="/map/" class="btn btn-ghost">Coverage map</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .node-slug {
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+    letter-spacing: 0.02em;
+    word-break: break-word;
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+/**
+ * Per-node pages: PalmasMesh.com/<slug>
+ *
+ * WHY THIS EXISTS. Every node broadcasts its long name as `PalmasMesh.com/<slug>`
+ * (PM-166), so the name is a URL a stranger reads off a map pin and types. A
+ * slug that 404s is worse than no URL at all, and node names are mutable by
+ * design — slugs move for reasons that have nothing to do with this website.
+ *
+ * HOW IT WORKS. Every slug in src/data/nodes.json gets a real page at HTTP 200,
+ * plus a lowercase alias page, because this site is served case-sensitively and
+ * the canonical slug is mixed-case. Anything NOT listed falls through to
+ * src/pages/404.astro, which renders the same body — so an unlisted or renamed
+ * slug still lands on a useful page rather than a dead end.
+ *
+ * ⚠️ The fallback is a real HTTP 404. Serving EVERY conceivable slug at 200
+ * would need on-demand rendering (an Astro adapter), which changes the Coolify
+ * deploy from static files to a Node server. Deliberately not done here.
+ *
+ * TO ADD A NODE: add it to src/data/nodes.json. Nothing in this file changes.
+ */
+import Base from "../layouts/Base.astro";
+import NodeBody from "../components/NodeBody.astro";
+import nodeData from "../data/nodes.json";
+
+export function getStaticPaths() {
+  const nodes = nodeData.nodes;
+
+  // Guard: a node slug that collides with a real page would be silently
+  // swallowed — static routes win over dynamic ones, so the node page would
+  // simply never generate and nobody would notice until someone typed it.
+  // Covers BOTH directory pages (./faq/index.astro -> "faq") and bare page
+  // files (./404.astro -> "404"), so a slug of "404" or "index" is caught too.
+  // Dynamic routes are skipped — this file must not reserve against itself.
+  const reserved = new Set(
+    Object.keys(import.meta.glob("./**/*.astro"))
+      .filter((p) => !p.includes("["))
+      .map((p) =>
+        p.replace(/^\.\//, "").replace(/\.astro$/, "").split("/")[0].toLowerCase()
+      )
+  );
+
+  const paths = [];
+  const seen = new Set();
+
+  for (const node of nodes) {
+    const canonical = node.slug;
+
+    if (reserved.has(canonical.toLowerCase())) {
+      throw new Error(
+        `nodes.json: slug "${canonical}" collides with the existing page ` +
+          `/${canonical.toLowerCase()}/. A static route wins over this dynamic ` +
+          `one, so the node page would never be generated. Rename the node.`
+      );
+    }
+
+    // Canonical first, then any case variant that differs from it.
+    for (const variant of [canonical, canonical.toLowerCase(), canonical.toUpperCase()]) {
+      if (seen.has(variant)) continue;
+      seen.add(variant);
+      paths.push({
+        params: { slug: variant },
+        props: { node, isCanonical: variant === canonical },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { node, isCanonical } = Astro.props;
+const canonicalUrl = new URL(
+  `/${node.slug}/`,
+  Astro.site ?? "https://palmasmesh.com"
+).href;
+---
+
+<Base
+  title={node.slug}
+  description={`${node.slug} is a node on PalmasMesh, the neighbor-run community radio network in Palmas del Mar.`}
+  canonical={canonicalUrl}
+  noindex={true}
+>
+  <NodeBody node={node} known={true} />
+</Base>

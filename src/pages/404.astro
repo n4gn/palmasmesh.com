@@ -1,16 +1,59 @@
 ---
+/**
+ * Not-found page — and the fallback half of the per-node wildcard route.
+ *
+ * Node long names are `PalmasMesh.com/<slug>` (PM-166) and slugs MOVE, because
+ * node names are mutable by design. src/pages/[slug].astro generates a real 200
+ * page for every slug listed in src/data/nodes.json; everything else arrives
+ * here. Rather than a dead end, a path that looks like a node name gets the same
+ * generic node page — so a renamed or not-yet-listed node still explains itself
+ * to whoever typed it off a map pin.
+ *
+ * ⚠️ This is a real HTTP 404. It is the right status for an unknown slug, and
+ * the page is useful anyway. Serving every conceivable slug at 200 would require
+ * on-demand rendering (an Astro adapter), changing the Coolify deploy from
+ * static files to a Node server.
+ */
 import Base from "../layouts/Base.astro";
+import NodeBody from "../components/NodeBody.astro";
+
+// A node slug is <=9 bytes, ASCII, URL-safe: A-Z a-z 0-9 - (PM-166).
+// Anything matching that shape is far more likely a node name than a typo of a
+// real page, so show the node page. Anything else gets the plain not-found.
+const raw = decodeURIComponent(Astro.url.pathname).replace(/^\/+|\/+$/g, "");
+const looksLikeNode = /^[A-Za-z0-9-]{1,9}$/.test(raw);
 ---
-<Base title="Page not found" description="That page isn't here.">
-  <section class="section section-dark" style="min-height:50vh;display:grid;place-items:center;text-align:center;">
-    <div class="wrap-narrow">
-      <p class="eyebrow">Signal lost</p>
-      <h1>We can't find that page.</h1>
-      <p class="lede">The link may be old, or the page may have moved. Let's get you back on the mesh.</p>
-      <div style="display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;">
-        <a href="/" class="btn btn-primary">Back home →</a>
-        <a href="/faq/" class="btn btn-ghost">Read the FAQ</a>
-      </div>
-    </div>
-  </section>
-</Base>
+
+{
+  looksLikeNode ? (
+    <Base
+      title={raw}
+      description="A node on PalmasMesh, the neighbor-run community radio network in Palmas del Mar."
+      noindex={true}
+    >
+      <NodeBody slug={raw} known={false} />
+    </Base>
+  ) : (
+    <Base title="Page not found" description="That page isn't here." noindex={true}>
+      <section
+        class="section section-dark"
+        style="min-height:50vh;display:grid;place-items:center;text-align:center;"
+      >
+        <div class="wrap-narrow">
+          <p class="eyebrow">Signal lost</p>
+          <h1>We can't find that page.</h1>
+          <p class="lede">
+            The link may be old, or the page may have moved. Let's get you back on
+            the mesh.
+          </p>
+          <div
+            style="display:flex;gap:0.8rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;"
+          >
+            <a href="/" class="btn btn-primary">Back home →</a>
+            <a href="/faq/" class="btn btn-ghost">Read the FAQ</a>
+          </div>
+        </div>
+      </section>
+    </Base>
+  )
+}

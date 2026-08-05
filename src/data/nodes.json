@@ -1,0 +1,46 @@
+{
+  "_comment": [
+    "Node slugs published as PalmasMesh.com/<slug> — the long name every node",
+    "broadcasts (PalmasMesh docs: PM-166, ruled 2026-08-04).",
+    "",
+    "PRIVACY RULE — Tim, 2026-08-05. NO PERSONALLY IDENTIFIABLE INFORMATION HERE",
+    "OR ON A NODE PAGE WITHOUT THAT HOST'S EXPLICIT APPROVAL. No host names, no",
+    "unit or street addresses, no coordinates. A stranger may learn that a node",
+    "exists, never who hosts it. Host attribution is welcome ONLY where the host",
+    "has agreed to it in advance — add it then, not before.",
+    "",
+    "'slug' is canonical and CASE-SENSITIVE, exactly as the node broadcasts it.",
+    "Lowercase aliases are generated automatically; do not list them by hand.",
+    "'live' means the node is on the air carrying this name TODAY. A planned",
+    "rename gets its page early on purpose — the URL then works the moment the",
+    "node is renamed, which is the whole point of the wildcard route.",
+    "",
+    "TO ADD A NODE: append an entry. That is the entire task."
+  ],
+  "nodes": [
+    {
+      "slug": "PNV1",
+      "shortName": "PNV1",
+      "live": true,
+      "note": "First node on the air under the PalmasMesh.com/<slug> convention."
+    },
+    {
+      "slug": "NP4TT",
+      "shortName": "AQUA",
+      "live": false,
+      "note": "Rename pending the firmware 2.8 gate."
+    },
+    {
+      "slug": "NP4G",
+      "shortName": "PLAN",
+      "live": false,
+      "note": "Rename pending the firmware 2.8 gate."
+    },
+    {
+      "slug": "Smarty",
+      "shortName": "SMRT",
+      "live": false,
+      "note": "Rename pending the firmware 2.8 gate."
+    }
+  ]
+}

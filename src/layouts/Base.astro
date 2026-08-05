@@ -6,11 +6,18 @@ import Footer from "../components/Footer.astro";
 const {
   title = "PalmasMesh",
   description = "A neighbor-run community radio network for Palmas del Mar. Stay connected when cell towers and Internet go down.",
+  // Override the canonical URL. Used by the per-node pages, whose lowercase
+  // alias paths must point at the canonical mixed-case slug.
+  canonical: canonicalOverride = null,
+  // Keep thin/duplicate pages out of the index. The per-node pages set this
+  // while they are generic; drop it on any node that gets real content.
+  noindex = false,
 } = Astro.props;
 
 const fullTitle = title === "PalmasMesh" ? title : `${title} · PalmasMesh`;
 const path = Astro.url.pathname;
-const canonical = new URL(path, Astro.site ?? "https://palmasmesh.com").href;
+const canonical =
+  canonicalOverride ?? new URL(path, Astro.site ?? "https://palmasmesh.com").href;
 ---
 <!doctype html>
 <html lang="en">
@@ -20,6 +27,7 @@ const canonical = new URL(path, Astro.site ?? "https://palmasmesh.com").href;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
