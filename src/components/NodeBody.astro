@@ -17,9 +17,11 @@ const label = node?.slug ?? slug;
 <section class="page-hero section-dark">
   <div class="wrap-narrow">
     <p class="eyebrow">PalmasMesh node</p>
+    {/* The id lets the 404 page fill in the typed slug at runtime — a static
+        build cannot know the requested path. See src/pages/404.astro. */}
     {label
-      ? <h1><span class="node-slug">{label}</span></h1>
-      : <h1>A PalmasMesh node</h1>}
+      ? <h1><span class="node-slug" id="node-slug">{label}</span></h1>
+      : <h1><span class="node-slug" id="node-slug">A PalmasMesh node</span></h1>}
     {known
       ? <p class="lede">
           You've found the page for one of the radios that make up the PalmasMesh
