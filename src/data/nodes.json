@@ -19,6 +19,12 @@
   ],
   "nodes": [
     {
+      "slug": "TheWoods",
+      "shortName": "WOOD",
+      "live": true,
+      "note": "Fill-in node on the north side, near the Plantation backbone node."
+    },
+    {
       "slug": "PNV1",
       "shortName": "PNV1",
       "live": true,
