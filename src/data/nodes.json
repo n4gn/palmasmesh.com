@@ -31,6 +31,12 @@
       "note": "First node on the air under the PalmasMesh.com/<slug> convention."
     },
     {
+      "slug": "SCC",
+      "shortName": "SCC",
+      "live": false,
+      "note": "Backbone node on the south side of Palmas."
+    },
+    {
       "slug": "NP4TT",
       "shortName": "AQUA",
       "live": false,
