@@ -53,6 +53,24 @@
       "shortName": "SMRT",
       "live": false,
       "note": "Rename pending the firmware 2.8 gate."
+    },
+    {
+      "slug": "PuraVida",
+      "shortName": "PURA",
+      "live": false,
+      "note": "Bench-configured 2026-08-20; mount pending."
+    },
+    {
+      "slug": "CstaVrde",
+      "shortName": "VRDE",
+      "live": false,
+      "note": "Bench-configured 2026-08-20; mount pending."
+    },
+    {
+      "slug": "FlamGreen",
+      "shortName": "FLAM",
+      "live": false,
+      "note": "Bench-configured 2026-08-21; mount pending."
     }
   ]
 }
