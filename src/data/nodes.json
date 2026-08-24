@@ -33,7 +33,7 @@
     {
       "slug": "SCC",
       "shortName": "SCC",
-      "live": false,
+      "live": true,
       "note": "Backbone node on the south side of Palmas."
     },
     {
