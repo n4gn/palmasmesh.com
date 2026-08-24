@@ -71,6 +71,12 @@
       "shortName": "FLAM",
       "live": false,
       "note": "Bench-configured 2026-08-21; mount pending."
+    },
+    {
+      "slug": "OSJMarina",
+      "shortName": "OSJ1",
+      "live": true,
+      "note": "Fill-in node in Old San Juan — the network's first node outside the Palmas area."
     }
   ]
 }
