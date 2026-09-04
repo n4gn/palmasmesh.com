@@ -77,6 +77,12 @@
       "shortName": "OSJ1",
       "live": true,
       "note": "Fill-in node in Old San Juan — the network's first node outside the Palmas area."
+    },
+    {
+      "slug": "Cedro",
+      "shortName": "CDRO",
+      "live": false,
+      "note": "Fill-in node on Cedro, covering a low-lying pocket the surrounding nodes reach poorly."
     }
   ]
 }
